@@ -4,16 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('currencies', function (Blueprint $table) {
-            $table->string('code')->primary();
-            $table->string('name');
+        Schema::create('countries', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
+            $table->string('code')->unique();
+            $table->string('currency_code');
+            $table->foreign('currency_code')->references('code')->on('currencies');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('currencies');
+        Schema::dropIfExists('countries');
     }
 };
