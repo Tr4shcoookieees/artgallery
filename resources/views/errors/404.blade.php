@@ -15,8 +15,7 @@
     </div>
     <div>
         <p class="mb-8 break-words text-4xl font-light">Кажется, вы заблудились!</p>
-        <a class="bg-black text-white text-xl font-light py-4 px-8 hover:bg-white hover:text-black hover:border-black border-2 border-black
-        transition-colors duration-300"
+        <a class="bg-black px-5 py-4 font-light text-white outline-2 outline-black transition-colors duration-300 -outline-offset-1 hover:bg-white hover:text-black hover:outline"
            href="/">Вернуться на главную</a>
     </div>
 </section>

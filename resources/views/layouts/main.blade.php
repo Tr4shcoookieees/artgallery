@@ -9,7 +9,7 @@
     <title>{{config('app.name')}}</title>
 </head>
 <body class="min-h-screen w-screen">
-<div class="mx-auto max-w-8xl px-4 pt-2">
+<div class="mx-auto max-w-8xl flex flex-col gap-y-8 px-4 py-2">
     @include('partials.header')
     @yield('content')
     @include('partials.footer')
