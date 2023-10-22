@@ -36,5 +36,12 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::patterns([
+            'id' => '[0-9]+',
+            'slug' => '[a-z0-9\-]+',
+            'uuid' => '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}',
+            'nickname' => '[a-zA-Z0-9]+',
+        ]);
     }
 }
