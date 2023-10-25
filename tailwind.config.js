@@ -10,7 +10,7 @@ export default {
                 'sans': ['Inter, sans-serif'],
             },
             colors: {
-                'primary': 'hsla(0, 69%, 39%, 1)'
+                'primary': 'hsla(0, 69%, 39%)'
             },
             spacing: {
                 //
@@ -25,7 +25,7 @@ export default {
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
         require('tailwind-scrollbar'),
-        require('tailwindcss-animated')
+        require('tailwindcss-animated'),
+        require('tailwindcss-debug-screens')
     ],
 }
-
