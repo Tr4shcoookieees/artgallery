@@ -1,4 +1,4 @@
-<svg class="w-44 sm:w-48 md:w-52 lg:w-60 xl:w-72" viewBox="0 0 280 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="w-44 sm:w-48 md:w-52 lg:w-60 xl:w-64" viewBox="0 0 280 79" fill="none" xmlns="http://www.w3.org/2000/svg">
     <mask id="path-1-outside-1_525_25" maskUnits="userSpaceOnUse" x="6.87341" y="6.87354" width="265" height="64" fill="black">
         <rect fill="white" x="6.87341" y="6.87354" width="265" height="64"/>
         <path d="M10.5154 54.7296H9.76055L28.569 10.9389L29.2609 10.6261L45.1128 54.7296H39.766L34.8594 40.9668H16.4913L10.5154 54.7296ZM26.6189 17.6952L16.7429 40.3412H34.6707L26.6189 17.6952Z"/>

@@ -2,7 +2,7 @@
     <div class="flex justify-between pb-2">
         <div class="inline-flex items-center gap-x-4">
             <div x-data="{ isOpen: false }" class="flex flex-nowrap items-center gap-x-2">
-                <img src="{{asset('assets/icons/compass.svg')}}" alt="region" class="hover:animate-rotate-y" @click="isOpen = !isOpen">
+                <img src="{{asset('assets/icons/compass.svg')}}" alt="region" class="hover:animate-rotate-y select-none" @click="isOpen = !isOpen">
                 <div class="relative" @click.outside="isOpen = false">
                     <button id="selectedRegion" type="button" class="font-medium underline underline-offset-4" @click="isOpen = !isOpen">Москва,
                         Россия
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="flex flex-nowrap rounded bg-zinc-600 bg-opacity-10 p-2">
-            <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language">
+            <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="select-none">
             <div class="ml-8 hidden cursor-pointer flex-nowrap items-center gap-x-2 md:flex">
                 @if(!$user = \Illuminate\Support\Facades\Auth::user())
                     <a href="/login">Войти</a>
@@ -58,7 +58,7 @@
             <label for="searchBar" class="sr-only">Search bar</label>
             <div class="flex items-center border-gray-300 bg-zinc-600 bg-opacity-10 p-4">
                 <input type="text" class="w-10/12 border-none bg-transparent p-0 font-light focus:border-none focus:ring-0" placeholder="Поиск" id="searchBar">
-                <img src="{{asset('assets/icons/search.svg')}}" alt="search" class="ml-auto cursor-pointer">
+                <img src="{{asset('assets/icons/search.svg')}}" alt="search" class="ml-auto cursor-pointer select-none">
             </div>
         </div>
     </nav>
