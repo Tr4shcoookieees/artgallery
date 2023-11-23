@@ -7,24 +7,11 @@ use Illuminate\Database\Seeder;
 
 class CurrencySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Currency::updateOrCreate([
-            'code' => 'USD',
-            'name' => 'Доллар США',
-        ]);
-
-        Currency::updateOrCreate([
-            'code' => 'EUR',
-            'name' => 'Евро',
-        ]);
-
-        Currency::updateOrCreate([
-            'code' => 'RUB',
-            'name' => 'Рубль',
-        ]);
+        Currency::updateOrCreate(['code' => 'USD'], ['name' => 'US Dollar', 'symbol' => '$']);
+        Currency::updateOrCreate(['code' => 'EUR'], ['name' => 'Euro', 'symbol' => '€']);
+        Currency::updateOrCreate(['code' => 'GBP'], ['name' => 'British Pound', 'symbol' => '£']);
+        Currency::updateOrCreate(['code' => 'RUB'], ['name' => 'Российский Рубль', 'symbol' => '₽']);
     }
 }
