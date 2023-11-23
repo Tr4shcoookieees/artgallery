@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/alpineStart.js'])
     <title>{{config('app.name')}}</title>
 </head>
-<body class="min-h-screen w-screen selection:bg-primary selection:text-white {{ app()->isLocal() ? 'debug-screens' : '' }}">
+<body class="min-h-screen max-w-full selection:bg-primary selection:text-white {{ app()->isLocal() ? 'debug-screens' : '' }}">
 <div class="mx-auto max-w-8xl flex flex-col gap-y-8 px-4 py-2">
     @include('partials.header')
     @yield('content')
