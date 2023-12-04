@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
-            $table->string('nickname');
+            $table->string('nickname')->index();
             $table->foreignIdFor(User::class)->constrained();
             $table->json('bio');
             $table->timestamp('created_at')->useCurrent();

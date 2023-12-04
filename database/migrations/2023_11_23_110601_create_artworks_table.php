@@ -14,14 +14,13 @@ return new class extends Migration {
     {
         Schema::create('artworks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->index();
             $table->foreignIdFor(Author::class)->constrained();
             $table->foreignIdFor(Category::class)->constrained();
             $table->string('image');
-            $table->text('description');
-            $table->json('info');
-            $table->float('price', 8, 2);
-            $table->boolean('is_sold')->default(false);
+            $table->text('description')->nullable();
+            $table->json('info')->nullable();
+            $table->float('price', 8, 2)->comment('Price in RUB');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

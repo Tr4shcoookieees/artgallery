@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Category extends Model
+class Style extends Model
 {
     use HasFactory;
 
@@ -14,8 +14,8 @@ class Category extends Model
         'translations' => 'json'
     ];
 
-    public function artworks(): HasMany
+    public function artworks(): BelongsToMany
     {
-        return $this->hasMany(Artwork::class);
+        return $this->belongsToMany(Artwork::class, 'artwork_styles');
     }
 }
