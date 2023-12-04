@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -183,7 +183,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'Category' => \App\Models\Category::class,
+        'User' => \App\Models\User::class,
+        'Artwork' => \App\Models\Artwork::class,
     ])->toArray(),
 
 ];

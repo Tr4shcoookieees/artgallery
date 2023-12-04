@@ -4,9 +4,9 @@
     <section style="background-image: url('{{asset('assets/banner.jpg')}}')" class="flex h-auto w-full flex-nowrap items-center justify-center bg-cover bg-fixed bg-bottom bg-blend-color-burn sm:h-96">
         <div class="flex h-full w-full flex-col items-center justify-center gap-y-2 bg-white bg-opacity-10 px-6 py-6 text-center font-light text-white backdrop-blur-sm backdrop-filter sm:px-16 sm:py-10 md:h-auto lg:w-auto">
             <h1 class="text-2xl uppercase sm:text-3xl">{{__('mainBanner.first')}}</h1>
-            <p>{{config('app.name') . ' ' . trans('mainBanner.second')}}</p>
+            <p>{{config('app.name') . ' ' . __('mainBanner.second')}}</p>
             <p>{{__('mainBanner.last')}}</p>
-            <x-link-primary href="/er" class="mt-2 hover:bg-opacity-10">{{__('mainBanner.button')}}</x-link-primary>
+            <x-link-primary href="{{route('catalog')}}" class="mt-2 hover:bg-opacity-10">{{__('mainBanner.button')}}</x-link-primary>
         </div>
     </section>
     <main class="md:px-14">
@@ -16,21 +16,17 @@
                 <h3 class="mt-1 text-2xl font-light uppercase">Работы месяца</h3>
             </div>
             <div class="mt-4 grid auto-rows-auto gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
-                <figure class="relative sm:col-span-2 lg:col-span-2">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
+                @foreach($monthly as $artwork)
+                    @if($loop->iteration == 1)
+                        <figure class="relative sm:col-span-2 lg:col-span-2">
+                            <x-artwork-card-homepage :author="$artwork->author->nickname" :artwork="$artwork"/>
+                        </figure>
+                    @else
+                        <figure class="relative">
+                            <x-artwork-card-homepage :author="$artwork->author->nickname" :artwork="$artwork"/>
+                        </figure>
+                    @endif
+                @endforeach
             </div>
         </section>
         <section class="mt-8 flex flex-col">
@@ -39,18 +35,11 @@
                 <h3 class="mt-1 text-2xl font-light uppercase">Популярные художники</h3>
             </div>
             <div class="mt-4 grid gap-4 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-4 lg:grid-rows-1">
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
+                @foreach($artTwo as $artwork)
+                    <figure class="relative">
+                        <x-artwork-card-homepage :author="$artwork->author->nickname" :artwork="$artwork"/>
+                    </figure>
+                @endforeach
             </div>
         </section>
         <section class="mt-8 flex flex-col">
@@ -59,21 +48,17 @@
                 <h3 class="mt-1 text-2xl font-light uppercase">Здесь вы найдете вдохновение</h3>
             </div>
             <div class="mt-4 grid auto-rows-auto gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
-                <figure class="relative sm:col-span-2 lg:col-span-2">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
-                <figure class="relative">
-                    <x-artwork-card-homepage :author="$author"/>
-                </figure>
+                @foreach($artThree as $artwork)
+                    @if($loop->iteration == 1)
+                        <figure class="relative sm:col-span-2 lg:col-span-2">
+                            <x-artwork-card-homepage :author="$artwork->author->nickname" :artwork="$artwork"/>
+                        </figure>
+                    @else
+                        <figure class="relative">
+                            <x-artwork-card-homepage :author="$artwork->author->nickname" :artwork="$artwork"/>
+                        </figure>
+                    @endif
+                @endforeach
             </div>
         </section>
         <section class="mt-8">

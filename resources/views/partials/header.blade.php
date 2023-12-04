@@ -37,23 +37,23 @@
         </div>
     </div>
     <div class="flex flex-col items-center gap-y-8 py-2">
-        <a href="{{route('home')}}" >
+        <a href="{{route('home')}}">
             <x-logo/>
         </a>
     </div>
     <nav class="relative flex items-center justify-center pt-2 sm:grid md:grid-cols-12 md:grid-rows-1">
         <ul class="flex justify-start overflow-x-scroll font-medium scrollbar-none md:col-start-4 md:col-end-10">
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('catalog', 'category=painting')}}">Картины</a>
+                <a href="{{route('catalog', 'category=painting')}}">{{__('messages.header.navbar.painting')}}</a>
             </li>
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('catalog', 'category=photo')}}">Фотография</a>
+                <a href="{{route('catalog', 'category=photo')}}">{{__('messages.header.navbar.photo')}}</a>
             </li>
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('catalog', 'category=graphics')}}">Графика</a>
+                <a href="{{route('catalog', 'category=graphics')}}">{{__('messages.header.navbar.graphic')}}</a>
             </li>
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('catalog', 'category=nft')}}">NFT</a>
+                <a href="{{route('catalog', 'category=nft')}}">{{__('messages.header.navbar.nft')}}</a>
             </li>
         </ul>
         <div class="col-start-11 col-end-13 hidden md:block">
