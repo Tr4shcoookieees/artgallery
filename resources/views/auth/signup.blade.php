@@ -10,7 +10,9 @@
 </head>
 <body style="background-image: url({{asset('assets/sign-up.jpg')}})" class="flex h-screen flex-col justify-between bg-cover">
 <header class="flex items-center justify-center bg-white py-4">
-    <x-logo/>
+    <a href="{{ route('home') }}">
+        <x-logo/>
+    </a>
 </header>
 <main class="flex items-center justify-center">
     <form class="flex flex-col gap-y-6 rounded bg-white p-4 min-w-[35vw]" method="post" action="{{ route('signup') }}">
@@ -44,26 +46,26 @@
             <div>
                 <label for="name" class="sr-only">Name</label>
                 <input type="text" name="name" id="name" placeholder="Имя" value="{{old('name')}}" required autofocus class="w-full">
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                <x-input-error :messages="$errors->get('name')" class="mt-2"/>
             </div>
             <div>
                 <label for="email" class="sr-only">Email</label>
                 <input type="email" name="email" id="email" placeholder="Электронная почта" value="{{old('email')}}" required class="w-full">
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <x-input-error :messages="$errors->get('email')" class="mt-2"/>
             </div>
             <div>
                 <label for="password" class="sr-only">Name</label>
                 <input type="password" name="password" id="password" placeholder="Пароль" value="{{old('password')}}" required class="w-full">
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <x-input-error :messages="$errors->get('password')" class="mt-2"/>
             </div>
             <div>
                 <label for="password_confirmation" class="sr-only">Name</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Подтверждение пароля" required value="{{old('password_confirmation')}}" class="w-full">
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
             </div>
             <p>Регистрируясь, вы соглашаетесь с <a class="underline" href="#">Условиями пользования</a> и <a class="underline" href="#">Политикой конфиденциальности</a></p>
             <div class="mt-4 flex flex-col gap-y-3 items-center">
-                <x-button-primary>Создать учетную запись</x-button-primary>
+                <x-button-primary type="submit">Создать учетную запись</x-button-primary>
                 <p>Уже есть аккаунт? <a href="#">Войти</a></p>
             </div>
         </div>

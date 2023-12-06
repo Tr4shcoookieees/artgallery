@@ -5,38 +5,38 @@
             <li>
                 <span class="text-lg font-medium">{{__('messages.footer.about.key')}}</span>
                 <ul class="font-light">
-                    <li>{{__('messages.footer.about.company')}}</li>
-                    <li>{{__('messages.footer.about.docs')}}</li>
-                    <li>{{__('messages.footer.about.partnership')}}</li>
-                    <li>{{__('messages.footer.about.job')}}</li>
+                    <li>{{__('The Company')}}</li>
+                    <li>{{__('Legal information')}}</li>
+                    <li>{{__('Affiliate program')}}</li>
+                    <li>{{__('ArtGallery is hiring')}}</li>
                 </ul>
             </li>
             <li>
-                <span class="text-lg font-medium">{{__('messages.footer.customer.key')}}</span>
+                <span class="text-lg font-medium">{{__('For customers')}}</span>
                 <ul class="font-light">
-                    <li>{{__('messages.footer.customer.original')}}</li>
+                    <li>{{__('Original Artworks')}}</li>
                     <li>
-                        <a href="{{ route('catalog') }}">{{__('messages.footer.customer.catalog')}}</a>
+                        <a href="{{ route('catalog') }}">{{__('Artwork catalog')}}</a>
                     </li>
-                    <li>{{__('messages.footer.customer.photo-bank')}}</li>
-                    <li>{{__('messages.footer.customer.printing')}}</li>
+                    <li>{{__('Photobank')}}</li>
+                    <li>{{__('Art prints')}}</li>
                 </ul>
             </li>
             <li>
-                <span class="text-lg font-medium">{{__('messages.footer.client.key')}}</span>
+                <span class="text-lg font-medium">{{__('For clients')}}</span>
                 <ul class="font-light">
-                    <li>{{__('messages.footer.client.art-lovers')}}</li>
-                    <li>{{__('messages.footer.client.authors')}}</li>
-                    <li>{{__('messages.footer.client.galleries')}}</li>
-                    <li>{{__('messages.footer.client.agent')}}</li>
-                    <li>{{__('messages.footer.client.association')}}</li>
+                    <li>{{__('Art lovers')}}</li>
+                    <li>{{__('Artists')}}</li>
+                    <li>{{__('Art Galleries')}}</li>
+                    <li>{{__('Art Art Agent')}}</li>
+                    <li>{{__('Artists Association')}}</li>
                 </ul>
             </li>
             <li>
-                <span class="text-lg font-medium">{{__('messages.footer.help.key')}}</span>
+                <span class="text-lg font-medium">{{__('Need help?')}}</span>
                 <ul class="flex flex-col font-light">
-                    <li>{{__('messages.footer.help.center')}}</li>
-                    <li>{{__('messages.footer.help.sales')}}</li>
+                    <li>{{__('Help center')}}</li>
+                    <li>{{__('Sales')}}</li>
                     <li class="mt-4 flex flex-row justify-center gap-x-4 gap-y-4 self-center border-t border-black px-4 pt-4 pb-0 sm:flex-wrap select-none">
                         <img src="{{asset('assets/icons/instagram.svg')}}" alt="">
                         <img src="{{asset('assets/icons/facebook.svg')}}" alt="">

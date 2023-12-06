@@ -3,27 +3,22 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Hash;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Password;
 
 class RegisteredUserController extends Controller
 {
-    public function create()
+    public function index()
     {
         return view('auth.signup');
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Password::defaults()],
-        ]);
+        $request->validated();
 
         $user = User::create([
             'name' => $request->input('name'),

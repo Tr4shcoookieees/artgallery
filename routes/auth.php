@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::middleware('guest')->group(function () {
-    Route::get('signup', [RegisteredUserController::class, 'create'])
+    Route::get('signup', [RegisteredUserController::class, 'index'])
         ->name('signup');
 
     Route::post('signup', [RegisteredUserController::class, 'store']);

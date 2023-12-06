@@ -13,15 +13,20 @@
                 </div>
             </div>
             <div class="hidden gap-x-2 md:inline-flex">
-                <a href="/er">{{__('messages.header.address')}}</a>
-                <a href="/er">{{__('messages.header.feedback')}}</a>
+                <a href="/er">{{__('Our address')}}</a>
+                <a href="/er">{{__('Feedback')}}</a>
             </div>
         </div>
         <div class="flex flex-nowrap rounded bg-zinc-600 bg-opacity-10 p-2">
-            <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="select-none">
+            <a href="{{route('set.locale', 'en')}}">
+                <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="select-none">
+            </a>
+            <a href="{{route('set.locale', 'ru')}}">
+                <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="select-none">
+            </a>
             <div class="ml-8 hidden cursor-pointer flex-nowrap items-center gap-x-2 md:flex">
                 @if(auth()->user())
-                    <a href="/profile">Maxim Abdreikin</a>
+                    <a href="/profile">{{auth()->user()->name}}</a>
                     @if(false)
                         {{--TODO: Вывод аватарки--}}
                         <img src="" alt="avatar">
@@ -29,9 +34,9 @@
                         <x-default-avatar/>
                     @endif
                 @else
-                    <a href="/login">{{__('messages.header.login')}}</a>
+                    <a href="/login">{{__('Log in')}}</a>
                     <span> / </span>
-                    <a href="/signup">{{__('messages.header.signup')}}</a>
+                    <a href="/signup">{{__('Sign Up')}}</a>
                 @endif
             </div>
         </div>
@@ -44,22 +49,22 @@
     <nav class="relative flex items-center justify-center pt-2 sm:grid md:grid-cols-12 md:grid-rows-1">
         <ul class="flex justify-start overflow-x-scroll font-medium scrollbar-none md:col-start-4 md:col-end-10">
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('catalog', 'category=painting')}}">{{__('messages.header.navbar.painting')}}</a>
+                <a href="{{route('catalog', 'category=painting')}}">{{__('Painting')}}</a>
             </li>
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('catalog', 'category=photo')}}">{{__('messages.header.navbar.photo')}}</a>
+                <a href="{{route('catalog', 'category=photo')}}">{{__('Photo')}}</a>
             </li>
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('catalog', 'category=graphics')}}">{{__('messages.header.navbar.graphic')}}</a>
+                <a href="{{route('catalog', 'category=graphics')}}">{{__('Graphic')}}</a>
             </li>
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('catalog', 'category=nft')}}">{{__('messages.header.navbar.nft')}}</a>
+                <a href="{{route('catalog', 'category=nft')}}">{{__('NFT')}}</a>
             </li>
         </ul>
         <div class="col-start-11 col-end-13 hidden md:block">
             <label for="searchBar" class="sr-only">Search bar</label>
             <div class="flex items-center border-gray-300 bg-zinc-600 bg-opacity-10 p-4">
-                <input type="text" class="w-10/12 border-none bg-transparent p-0 font-light focus:border-none focus:ring-0" placeholder="{{__('messages.header.search')}}" id="searchBar">
+                <input type="text" class="w-10/12 border-none bg-transparent p-0 font-light focus:border-none focus:ring-0" placeholder="{{__('Search')}}" id="searchBar">
                 <img src="{{asset('assets/icons/search.svg')}}" alt="search" class="ml-auto cursor-pointer select-none">
             </div>
         </div>

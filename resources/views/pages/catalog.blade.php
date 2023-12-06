@@ -8,28 +8,28 @@
         </div>
         <div class="mt-8 flex gap-x-8">
             <aside class="flex w-1/4 flex-col gap-y-2">
-                <x-filter-item :title="__('messages.filters.category')">
+                <x-filter-item :title="__('Category')">
                     <ul x-show="filter" id="categories">
                         @foreach($categories as $category)
                             <x-filter-input :model="$category" id_text="category-{{$category->id}}" type="radio" filter_name="category"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
-                <x-filter-item :title="__('messages.filters.style')">
+                <x-filter-item :title="__('Style')">
                     <ul x-show="filter" id="styles">
                         @foreach($styles as $style)
                             <x-filter-input :model="$style" id_text="style-{{$style->id}}" type="checkbox" filter_name="style"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
-                <x-filter-item :title="__('messages.filters.theme')">
+                <x-filter-item :title="__('Theme')">
                     <ul x-show="filter" id="themes">
                         @foreach($themes as $theme)
                             <x-filter-input :model="$theme" id_text="theme-{{$theme->id}}" type="radio" filter_name="theme"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
-                <x-filter-item :title="__('messages.filters.price')">
+                <x-filter-item :title="__('Price')">
                     <div x-show="filter" class="px-5 py-3 block first-letter:uppercase">
                         <div class="flex justify-between items-center mx-3 mb-4">
                             <div>
@@ -52,16 +52,16 @@
                         </div>
                     </div>
                 </x-filter-item>
-                <x-filter-item :title="__('messages.filters.color')">
+                <x-filter-item :title="__('Color')">
                     <ul x-show="filter" id="themes">
                         @foreach($colors as $color)
                             <x-filter-input :model="$color" id_text="color-{{$color->id}}" type="checkbox" filter_name="color"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
-                <x-link-primary href="{{ request()->fullUrl() }}" id="filter_link">{{__('Применить фильтры')}}</x-link-primary>
+                <x-link-primary href="{{ request()->fullUrl() }}" id="filter_link">{{__('Apply filters')}}</x-link-primary>
                 @if(request()->hasAny(['category', 'style', 'theme', 'price_from', 'price_to']))
-                    <x-link-primary href="{{ route('catalog') }}" id="filter_link">{{__('Сбросить фильтры')}}</x-link-primary>
+                    <x-link-primary href="{{ route('catalog') }}" id="filter_link">{{__('Reset filters')}}</x-link-primary>
                 @endif
             </aside>
             <div class="w-3/4 columns-3 gap-8 relative">
@@ -69,7 +69,7 @@
                     <x-catalog-item :artwork="$artwork"/>
                 @empty
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-zinc-900 text-xl text-opacity-40">
-                        <p>Работы не найдены</p>
+                        <p>{{__('Artworks not found')}}</p>
                     </div>
                 @endforelse
             </div>
