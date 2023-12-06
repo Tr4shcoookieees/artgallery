@@ -2,6 +2,7 @@
 
 use App\Models\Author;
 use App\Models\Category;
+use App\Models\Theme;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,7 @@ return new class extends Migration {
             $table->string('title')->index();
             $table->foreignIdFor(Author::class)->constrained();
             $table->foreignIdFor(Category::class)->constrained();
+            $table->foreignIdFor(Theme::class)->constrained();
             $table->string('image');
             $table->text('description')->nullable();
             $table->json('info')->nullable();

@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Style extends Model
 {
-    use HasFactory;
-
     protected $casts = [
         'translations' => 'json'
     ];
