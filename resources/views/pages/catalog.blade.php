@@ -74,7 +74,7 @@
                 @endforelse
             </div>
         </div>
-        {{$artworks->links()}}
+        {{$artworks->appends(request()->query())->links()}}
     </main>
 @endsection
 

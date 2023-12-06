@@ -18,15 +18,20 @@
             </div>
         </div>
         <div class="flex flex-nowrap rounded bg-zinc-600 bg-opacity-10 p-2">
-            <a href="{{route('set.locale', 'en')}}">
-                <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="select-none">
-            </a>
-            <a href="{{route('set.locale', 'ru')}}">
-                <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="select-none">
-            </a>
+            <div class="flex items-center gap-x-2">
+                <a href="{{route('set.locale', 'en')}}">
+                    <img src="{{asset('assets/icons/flag-us.svg')}}" alt="language" class="select-none h-4 w-auto">
+                </a>
+                <a href="{{route('set.locale', 'ru')}}">
+                    <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="select-none h-4 w-auto">
+                </a>
+            </div>
             <div class="ml-8 hidden cursor-pointer flex-nowrap items-center gap-x-2 md:flex">
                 @if(auth()->user())
-                    <a href="/profile">{{auth()->user()->name}}</a>
+                    <form method="post" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">{{auth()->user()->name}}</a>
+                    </form>
                     @if(false)
                         {{--TODO: Вывод аватарки--}}
                         <img src="" alt="avatar">
@@ -34,9 +39,9 @@
                         <x-default-avatar/>
                     @endif
                 @else
-                    <a href="/login">{{__('Log in')}}</a>
+                    <a href="{{ route('login') }}">{{__('Log in')}}</a>
                     <span> / </span>
-                    <a href="/signup">{{__('Sign Up')}}</a>
+                    <a href="{{ route('signup') }}">{{__('Sign Up')}}</a>
                 @endif
             </div>
         </div>
