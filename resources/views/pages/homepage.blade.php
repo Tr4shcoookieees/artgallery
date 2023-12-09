@@ -16,7 +16,7 @@
                 <h3 class="mt-1 text-2xl font-light uppercase">Работы месяца</h3>
             </div>
             <div class="mt-4 grid auto-rows-auto gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
-                @foreach($monthly as $artwork)
+                @foreach($artworks_ten[0] as $artwork)
                     @if($loop->iteration == 1)
                         <figure class="relative sm:col-span-2 lg:col-span-2">
                             <x-artwork-card-homepage :author="$artwork->author->nickname" :artwork="$artwork"/>
@@ -35,7 +35,7 @@
                 <h3 class="mt-1 text-2xl font-light uppercase">Популярные художники</h3>
             </div>
             <div class="mt-4 grid gap-4 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-4 lg:grid-rows-1">
-                @foreach($artTwo as $artwork)
+                @foreach($artworks_four as $artwork)
                     <figure class="relative">
                         <x-artwork-card-homepage :author="$artwork->author->nickname" :artwork="$artwork"/>
                     </figure>
@@ -48,7 +48,7 @@
                 <h3 class="mt-1 text-2xl font-light uppercase">Здесь вы найдете вдохновение</h3>
             </div>
             <div class="mt-4 grid auto-rows-auto gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
-                @foreach($artThree as $artwork)
+                @foreach($artworks_ten[1] as $artwork)
                     @if($loop->iteration == 1)
                         <figure class="relative sm:col-span-2 lg:col-span-2">
                             <x-artwork-card-homepage :author="$artwork->author->nickname" :artwork="$artwork"/>

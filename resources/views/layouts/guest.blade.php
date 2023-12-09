@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css'])
     <title>{{config('app.name')}}</title>
 </head>
-<body style="background-image: url({{asset('assets/sign-up.jpg')}})" class="flex h-screen flex-col justify-between bg-cover">
+<body style="background-image: url({{request()->path() === 'login' ? asset('assets/login.jpg') : asset('assets/signup.jpg')}})" class="flex h-screen flex-col justify-between bg-cover">
 <header class="flex items-center justify-center bg-white py-4">
     <a href="{{ route('home') }}">
         <x-logo/>

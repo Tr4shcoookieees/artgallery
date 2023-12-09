@@ -2,7 +2,7 @@
     'artwork'
 ])
 
-<figure {{ $attributes->class(['inline-block w-full mb-6']) }}>
+<figure {{ $attributes->class(['inline-block w-full mb-6 hover:scale-95 transition-transform duration-300 ease-in-out']) }} class="">
     <img src="{{$artwork->image}}" alt="{{$artwork->title}}" class="w-full select-none">
     <figcaption class="mt-3">
         <p class="break-words text-lg font-medium capitalize">{{$artwork->author->nickname}}</p>

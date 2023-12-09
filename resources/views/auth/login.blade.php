@@ -47,7 +47,7 @@
             </div>
             <div class="mt-4 flex flex-col gap-y-3 items-center">
                 <x-button-primary type="submit">Войти</x-button-primary>
-                <p>Еще не завели аккаунт? <a href="#">Зарегистрируйтесь</a></p>
+                <p>Еще не завели аккаунт? <a href="{{ route('signup') }}">Зарегистрируйтесь</a></p>
             </div>
         </div>
     </form>

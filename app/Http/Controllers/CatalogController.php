@@ -14,7 +14,7 @@ class CatalogController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $artworks = Artwork::filter($request)->with('category')->orderByDesc('created_at')->paginate(12);
+        $artworks = Artwork::filter($request)->with('category')->paginate(12);
 
         $categories = Category::get();
         $styles = Style::get();

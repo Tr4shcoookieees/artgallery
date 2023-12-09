@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\SocialiteAuthenticationController;
 
 Route::middleware('guest')->group(function () {
     Route::get('signup', [RegisteredUserController::class, 'index'])
@@ -13,6 +14,11 @@ Route::middleware('guest')->group(function () {
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+    Route::prefix('oauth')->name('oauth.')->group(function () {
+        Route::get('google/redirect', [SocialiteAuthenticationController::class, 'redirectToGoogle'])->name('google.redirect');
+        Route::get('google/callback', [SocialiteAuthenticationController::class, 'handleGoogleCallback'])->name('google.callback');
+    });
 //
 //    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
 //        ->name('password.request');

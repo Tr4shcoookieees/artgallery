@@ -1,3 +1,4 @@
+// Filters
 const categories = Array.from(document.querySelectorAll('input[name="category"]'));
 const styles = Array.from(document.querySelectorAll('input[name="style"]'));
 const themes = Array.from(document.querySelectorAll('input[name="theme"]'));
@@ -97,3 +98,56 @@ priceToInput.addEventListener('change', () => {
         filterLink.href = filterLink.href.includes('price_to') ? filterLink.href.replace(/price_to=[^&]*/, `${newLink}`) : filterLink.href + `?${newLink}`;
     }
 });
+
+// Price slider
+const minValue = document.getElementById('min_value');
+const maxValue = document.getElementById('max_value');
+
+const rangeFill = document.getElementById('range_fill');
+
+function validateRange() {
+    let minPrice = parseInt(inputElements[0].value);
+    let maxPrice = parseInt(inputElements[1].value);
+
+    if (minPrice > maxPrice) {
+        let tempValue = maxPrice;
+        maxPrice = minPrice;
+        minPrice = tempValue;
+    }
+
+    const minPercentage = ((minPrice - 100) / 699900) * 100;
+    const maxPercentage = ((maxPrice - 100) / 699900) * 100;
+
+    rangeFill.style.left = minPercentage + "%";
+    rangeFill.style.width = maxPercentage - minPercentage + "%";
+
+    minValue.innerHTML = minPrice + "&#8381;";
+    maxValue.innerHTML = maxPrice + "&#8381;";
+}
+
+const inputElements = document.querySelectorAll('input[type="range"]');
+
+inputElements.forEach((element) => {
+    element.addEventListener("input", validateRange);
+});
+
+validateRange();
+// Sorting
+const sortingItems = document.querySelectorAll('.sorting-item');
+
+sortingItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+        event.preventDefault();
+        let svg = item.querySelector('svg');
+        if (svg) {
+            svg.style.transform = svg.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+        let newLink = `sort=${item.dataset.sortingType}%25${item.href.includes(`sort=${item.dataset.sortingType}%25desc`) ? 'asc' : 'desc'}`;
+        if (location.href.includes('?')) {
+            item.setAttribute('href', item.href.includes('sort') ? item.href.replace(/sort=[^&]*/, `${newLink}`) : item.href + `&${newLink}`);
+        } else {
+            item.setAttribute('href', item.href.includes('sort') ? item.href.replace(/sort=[^&]*/, `${newLink}`) : item.href + `?${newLink}`);
+        }
+        window.location.href = item.href;
+    });
+})

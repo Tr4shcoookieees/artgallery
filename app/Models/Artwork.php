@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
 class Artwork extends Model
@@ -140,6 +139,16 @@ class Artwork extends Model
             },
             'price_to' => function ($q) use ($request) {
                 $q->where('price', '<=', $request->input('price_to'));
+            },
+            'sort' => function ($q) use ($request) {
+                $sort = explode('%', $request->input('sort'));
+                $sort_field = $sort[0];
+                $sort_order = $sort[1] ?? 'asc';
+                if ($sort_field === 'size') {
+                    $q->orderByRaw('JSON_EXTRACT(info, "$.width") * JSON_EXTRACT(info, "$.height") ' . $sort_order);
+                } else {
+                    $q->orderBy($sort_field, $sort_order);
+                }
             }
         ];
         foreach ($filters as $name => $callback) {
