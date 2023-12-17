@@ -94,7 +94,7 @@
                 </x-filter-item>
                 <x-link-primary href="{{ request()->fullUrl() }}" id="filter_link">{{__('Apply filters')}}</x-link-primary>
                 @if(request()->hasAny(['category', 'style', 'theme', 'price_from', 'price_to']))
-                    <x-link-primary href="{{ route('catalog') }}" id="filter_link">{{__('Reset filters')}}</x-link-primary>
+                    <x-link-primary href="{{ route('artworks.index') }}" id="filter_link">{{__('Reset filters')}}</x-link-primary>
                 @endif
             </aside>
             <div class="relative w-3/4 columns-3 gap-8">

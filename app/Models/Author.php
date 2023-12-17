@@ -15,6 +15,10 @@ class Author extends Model
         'bio' => 'json'
     ];
 
+    protected $with = [
+        'user'
+    ];
+
     public function artworks(): HasMany
     {
         return $this->hasMany(Artwork::class, 'author_id');

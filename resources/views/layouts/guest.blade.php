@@ -18,7 +18,7 @@
     @yield('content')
 </main>
 <footer class="bg-white py-2">
-    <p class="mt-2 w-full select-none text-center text-sm font-light opacity-40">&copy; 2023 Абдрейкин М. А.<span class="hidden sm:inline">,</span> <br class="block sm:hidden"> ИСПС-11-21, г. Красноярск</p>
+    <p class="my-2 w-full select-none text-center text-sm font-light opacity-40">&copy; 2023 Абдрейкин М. А.<span class="hidden sm:inline">,</span> <br class="block sm:hidden"> ИСПС-11-21, г. Красноярск</p>
 </footer>
 </body>
 </html>

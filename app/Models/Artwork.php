@@ -81,7 +81,7 @@ class Artwork extends Model
     protected function condition(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => json_decode($attributes['info'])->condition->{\App::getLocale()},
+            get: fn($value, $attributes) => json_decode($attributes['info'])->condition->{app()->getLocale()},
         );
     }
 
@@ -102,7 +102,7 @@ class Artwork extends Model
     protected function material(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => json_decode($attributes['info'])->material->{\App::getLocale()},
+            get: fn($value, $attributes) => json_decode($attributes['info'])->material->{app()->getLocale()},
         );
     }
 

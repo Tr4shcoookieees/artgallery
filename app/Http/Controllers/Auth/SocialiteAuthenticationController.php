@@ -14,7 +14,10 @@ class SocialiteAuthenticationController extends Controller
 
     public function handleGoogleCallback()
     {
-//        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google')->user();
+        $locale = $user->user['locale'];
+        app()->setLocale($locale);
+        session()->put('locale', $locale);
         return redirect()->route('home')->with('oauth', __('Authentication successful'));
     }
 }

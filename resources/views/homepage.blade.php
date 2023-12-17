@@ -6,7 +6,7 @@
             <h1 class="text-2xl uppercase sm:text-3xl">{{__('Buying art has become much easier')}}</h1>
             <p>{{__(':appName is exactly the place you have been looking for!', ['appName' => config('app.name')])}}</p>
             <p>{{__('Free shipping, fair prices, over a million works from around the world for sale!')}}</p>
-            <x-link-primary href="{{route('catalog')}}" class="mt-2 hover:bg-opacity-10">{{__('Learn more')}}</x-link-primary>
+            <x-link-primary href="{{route('artworks.index')}}" class="mt-2 hover:bg-opacity-10">{{__('Learn more')}}</x-link-primary>
         </div>
     </section>
     <main class="md:px-14">

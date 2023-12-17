@@ -16,7 +16,7 @@
                 <ul class="font-light">
                     <li>{{__('Original Artworks')}}</li>
                     <li>
-                        <a href="{{ route('catalog') }}">{{__('Artwork catalog')}}</a>
+                        <a href="{{ route('artworks.index') }}">{{__('Artwork catalog')}}</a>
                     </li>
                     <li>{{__('Photobank')}}</li>
                     <li>{{__('Art prints')}}</li>
@@ -28,7 +28,7 @@
                     <li>{{__('Art lovers')}}</li>
                     <li>{{__('Artists')}}</li>
                     <li>{{__('Art Galleries')}}</li>
-                    <li>{{__('Art Art Agent')}}</li>
+                    <li>{{__('Art Agent')}}</li>
                     <li>{{__('Artists Association')}}</li>
                 </ul>
             </li>

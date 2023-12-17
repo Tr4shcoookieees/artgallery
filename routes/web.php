@@ -1,16 +1,15 @@
 <?php
 
-use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\ArtworkController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::prefix('catalog')->get('/', CatalogController::class)->name('catalog');
-
+Route::resource('artworks', ArtworkController::class)->only(['index', 'show']);
 
 /**
- * Вспомогательные ссылки
+ * Служебные роуты
  */
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
