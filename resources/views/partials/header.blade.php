@@ -1,8 +1,8 @@
-<header class="border-b border-primary pb-4">
+<header class="border-b pb-4 border-primary">
     <div class="flex justify-between pb-2">
         <div class="inline-flex items-center gap-x-4">
             {{--<div x-data="{ isOpen: false }" class="flex flex-nowrap items-center gap-x-2">
-                <img src="{{asset('assets/icons/compass.svg')}}" alt="region" class="hover:animate-rotate-y select-none" @click="isOpen = !isOpen">
+                <img src="{{asset('assets/icons/compass.svg')}}" alt="region" class="select-none hover:animate-rotate-y" @click="isOpen = !isOpen">
                 <div class="relative" @click.outside="isOpen = false">
                     <button id="selectedRegion" type="button" class="font-medium underline underline-offset-4" @click="isOpen = !isOpen">Москва,
                         Россия
@@ -14,10 +14,10 @@
             </div>--}}
             <div class="flex items-center gap-x-2">
                 <a href="{{route('set.locale', 'en')}}">
-                    <img src="{{asset('assets/icons/flag-us.svg')}}" alt="language" class="select-none h-4 w-auto">
+                    <img src="{{asset('assets/icons/flag-us.svg')}}" alt="language" class="h-4 w-auto select-none">
                 </a>
                 <a href="{{route('set.locale', 'ru')}}">
-                    <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="select-none h-4 w-auto">
+                    <img src="{{asset('assets/icons/flag-ru.svg')}}" alt="language" class="h-4 w-auto select-none">
                 </a>
             </div>
             <div class="hidden gap-x-2 md:inline-flex">
@@ -28,13 +28,9 @@
         <div class="flex flex-nowrap rounded-sm bg-zinc-100 p-2">
             <div class="hidden cursor-pointer flex-nowrap items-center gap-x-2 md:flex">
                 @auth
-                    <form method="post" action="{{ route('logout') }}">
-                        @csrf
-                        <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">{{auth()->user()->name}}</a>
-                    </form>
-                    @if(false)
-                        {{--TODO: Вывод аватарки--}}
-                        <img src="" alt="avatar">
+                    <a href="{{route('profile.edit')}}">{{auth()->user()->name}}</a>
+                    @if(auth()->user()->avatar !== null)
+                        <img src="{{auth()->user()->avatar_normalize}}" alt="avatar" class="h-8 w-8 rounded-2xl">
                     @else
                         <x-default-avatar/>
                     @endif
@@ -53,8 +49,9 @@
             <x-logo/>
         </a>
     </div>
-    <nav class="relative flex items-center justify-center pt-2 sm:grid md:grid-cols-12 md:grid-rows-1">
-        <ul class="flex justify-start overflow-x-scroll font-medium scrollbar-none md:col-start-4 md:col-end-10">
+    <nav class="relative flex items-center justify-center pt-2">
+        <div class="w-1/4"></div>
+        <ul class="flex w-2/4 justify-start overflow-x-scroll font-medium scrollbar-none">
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
                 <a href="{{route('artworks.index', 'category=painting')}}">{{__('Painting')}}</a>
             </li>
@@ -62,15 +59,15 @@
                 <a href="{{route('artworks.index', 'category=photo')}}">{{__('Photo')}}</a>
             </li>
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
-                <a href="{{route('artworks.index', 'category=graphics')}}">{{__('Graphic')}}</a>
+                <a href="{{route('artworks.index', 'category=graphic')}}">{{__('Graphic')}}</a>
             </li>
             <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
                 <a href="{{route('artworks.index', 'category=nft')}}">{{__('NFT')}}</a>
             </li>
         </ul>
-        <div class="col-start-11 col-end-13 hidden md:block">
+        <div class="col-start-11 col-end-13 hidden justify-end md:flex">
             <label for="searchBar" class="sr-only">Search bar</label>
-            <div class="flex items-center border-gray-300 bg-zinc-100 p-4 rounded-sm">
+            <div class="flex items-center rounded-sm border-gray-300 bg-zinc-100 px-4 py-3">
                 <input type="text" class="w-10/12 border-none bg-transparent p-0 font-light focus:border-none focus:ring-0" placeholder="{{__('Search')}}" id="searchBar">
                 <img src="{{asset('assets/icons/search.svg')}}" alt="search" class="ml-auto cursor-pointer select-none">
             </div>

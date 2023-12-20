@@ -20,28 +20,28 @@
         </div>
         <div class="flex flex-col gap-y-2">
             <div>
-                <label for="name" class="sr-only">Name</label>
-                <input type="text" name="name" id="name" placeholder="Имя" value="{{old('name')}}" required autofocus class="w-full">
+                <x-input-label for="name" :value="__('Name')" class="sr-only"/>
+                <x-text-input id="name" name="name" type="text" :value="old('name')" :placeholder="__('Name')" class="w-full" required autofocus/>
                 <x-input-error :messages="$errors->get('name')" class="mt-2"/>
             </div>
             <div>
-                <label for="email" class="sr-only">Email</label>
-                <input type="email" name="email" id="email" placeholder="Электронная почта" value="{{old('email')}}" required class="w-full">
+                <x-input-label for="email" :value="__('Email')" class="sr-only"/>
+                <x-text-input id="email" name="email" type="email" :value="old('email')" :placeholder="__('Email')" class="w-full" required/>
                 <x-input-error :messages="$errors->get('email')" class="mt-2"/>
             </div>
             <div>
-                <label for="password" class="sr-only">Name</label>
-                <input type="password" name="password" id="password" placeholder="Пароль" value="{{old('password')}}" required class="w-full">
+                <x-input-label for="password" :value="__('Password')" class="sr-only"/>
+                <x-text-input id="password" name="password" type="password" :value="old('password')" :placeholder="__('Password')" class="w-full" required/>
                 <x-input-error :messages="$errors->get('password')" class="mt-2"/>
             </div>
             <div>
-                <label for="password_confirmation" class="sr-only">Name</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Подтверждение пароля" required value="{{old('password_confirmation')}}" class="w-full">
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
+                <x-input-label for="password_confirmation" :value="__('Confirm password')" class="sr-only"/>
+                <x-text-input id="password_confirmation" name="password_confirmation" type="password" :value="old('password_confirmation')" :placeholder="__('Confirm password')" class="w-full" required/>
+                <x-input-error :messages="$errors->get('password')" class="mt-2"/>
             </div>
             <p>Регистрируясь, вы соглашаетесь с <a class="underline" href="#">Условиями пользования</a> и <a class="underline" href="#">Политикой конфиденциальности</a></p>
-            <div class="mt-4 flex flex-col gap-y-3 items-center">
-                <x-button-primary type="submit">Создать учетную запись</x-button-primary>
+            <div class="mt-4 flex flex-col items-center gap-y-3">
+                <x-primary-button type="submit">Создать учетную запись</x-primary-button>
                 <p>Уже есть аккаунт? <a href="{{ route('login') }}">Войти</a></p>
             </div>
         </div>

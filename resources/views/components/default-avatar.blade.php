@@ -8,4 +8,4 @@
     $link = $defaults[$picker];
 @endphp
 
-<img src="{{$link}}" alt="avatar" class="rounded-2xl border-2 border-gray-400">
+<img src="{{$link}}" alt="avatar" {{$attributes->merge(['class' => 'rounded-2xl border-2 border-gray-400'])}}>
