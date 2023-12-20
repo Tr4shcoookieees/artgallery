@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
     <title>{{config('app.name')}} | 404</title>
 </head>
-<body class="h-screen w-screen font-inter bg-cover bg-center" style="background-image: url({{asset('assets/404.jpg')}})">
+<body class="h-screen w-screen bg-cover bg-center font-inter" style="background-image: url({{asset('assets/404.jpg')}})">
 <section class="ml-32 flex h-screen w-4/12 flex-col justify-center gap-y-16 bg-white px-16">
     <div>
         <h1 class="mb-4 text-7xl font-black">404</h1>

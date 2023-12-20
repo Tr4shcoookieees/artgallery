@@ -9,7 +9,7 @@
     <title>{{config('app.name')}}</title>
 </head>
 <body class="min-h-screen max-w-full selection:bg-primary selection:text-white {{ app()->isLocal() ? 'debug-screens' : '' }}">
-<div class="mx-auto max-w-8xl flex flex-col gap-y-8 px-4 py-2">
+<div class="mx-auto flex flex-col gap-y-8 px-4 py-2 max-w-8xl">
     @include('partials.header')
     @yield('content')
     @include('partials.footer')

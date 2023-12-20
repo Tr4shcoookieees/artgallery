@@ -510,10 +510,10 @@
     </style>
 </head>
 <body class="antialiased">
-<div class="relative flex items-top justify-center min-h-screen  sm:items-center sm:pt-0">
-    <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
+<div class="relative flex min-h-screen justify-center items-top sm:items-center sm:pt-0">
+    <div class="mx-auto max-w-xl sm:px-6 lg:px-8">
         <div class="flex items-center pt-8 sm:justify-start sm:pt-0">
-            <div class="px-4 text-lg border-r border-gray-400 tracking-wider" style="color: #a71b1b">
+            <div class="border-r border-gray-400 px-4 text-lg tracking-wider" style="color: #a71b1b">
                 @yield('code')
             </div>
 

@@ -7,13 +7,12 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi deleniti dolorum facilis fugiat in ipsam optio rem reprehenderit similique? Assumenda blanditiis error ipsa nobis placeat quas. Alias aliquid, dolorum est officia ratione veritatis voluptas.</p>
         </div>
         {{--Sorting by name, price, size--}}
-        <div class="mt-8 flex gap-x-8">
-            <div class="w-1/4"></div>
-            <div class="flex w-3/4 items-center justify-end gap-x-4">
+        <div class="mt-8 flex justify-end gap-x-8">
+            <div class="flex items-center justify-end gap-x-4">
                 <div>
                     <label class="text-sm font-medium">Сортировать по:</label>
                 </div>
-                <a href="{{request()->fullUrl()}}" class="text-sm font-medium sorting-item mr-2" data-sorting-type="price">
+                <a href="{{request()->fullUrl()}}" class="mr-2 text-sm font-medium sorting-item" data-sorting-type="price">
                     <div class="inline-flex items-center gap-x-2">
                         <p>Цене</p>
                         @if(request('sort') === 'price%asc' || request('sort') === 'price%desc')
@@ -21,7 +20,7 @@
                         @endif
                     </div>
                 </a>
-                <a href="{{request()->fullUrl()}}" class="text-sm font-medium sorting-item mr-2" data-sorting-type="title">
+                <a href="{{request()->fullUrl()}}" class="mr-2 text-sm font-medium sorting-item" data-sorting-type="title">
                     <div class="inline-flex items-center gap-x-2">
                         <p>Названию</p>
                         @if(request('sort') === 'title%asc' || request('sort') === 'title%desc')
@@ -29,7 +28,7 @@
                         @endif
                     </div>
                 </a>
-                <a href="{{request()->fullUrl()}}" class="text-sm font-medium sorting-item mr-2" data-sorting-type="size">
+                <a href="{{request()->fullUrl()}}" class="mr-2 text-sm font-medium sorting-item" data-sorting-type="size">
                     <div class="inline-flex items-center gap-x-2">
                         <p>Размеру</p>
                         @if(request('sort') === 'size%asc' || request('sort') === 'size%desc')
@@ -42,21 +41,21 @@
         <div class="mt-8 flex gap-x-8">
             <aside class="flex w-1/4 flex-col gap-y-2">
                 <x-filter-item :title="__('Category')">
-                    <ul x-show="filter" id="categories">
+                    <ul x-show="filter" id="categories" class="max-h-52 overflow-y-scroll">
                         @foreach($categories as $category)
                             <x-filter-input :model="$category" id_text="category-{{$category->id}}" type="radio" filter_name="category"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
                 <x-filter-item :title="__('Style')">
-                    <ul x-show="filter" id="styles">
+                    <ul x-show="filter" id="styles" class="max-h-52 overflow-y-scroll">
                         @foreach($styles as $style)
                             <x-filter-input :model="$style" id_text="style-{{$style->id}}" type="checkbox" filter_name="style"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
                 <x-filter-item :title="__('Theme')">
-                    <ul x-show="filter" id="themes">
+                    <ul x-show="filter" id="themes" class="max-h-52 overflow-y-scroll">
                         @foreach($themes as $theme)
                             <x-filter-input :model="$theme" id_text="theme-{{$theme->id}}" type="radio" filter_name="theme"/>
                         @endforeach
@@ -67,28 +66,35 @@
                         <div class="mx-3 mb-4 flex items-center justify-between">
                             <div>
                                 <label class="text-sm font-medium">От</label>
-                                <p id="min_value" class="font-medium">{{request()->has('price_from') ? request('price_from') : '0'}} &#8381;</p>
+                                <p id="min_value" class="font-medium">{{request('price_from') ? request('price_from') : '0'}} &#8381;</p>
                             </div>
                             <div>
                                 <label class="text-sm font-medium">До</label>
-                                <p id="max_value" class="font-medium">{{request()->has('price_to') ? request('price_to') : '700000'}} </p>
+                                <p id="max_value" class="font-medium">{{request('price_to') ? request('price_to') : '700000'}} &#8381;</p>
                             </div>
                         </div>
                         <div class="relative">
                             <div id="range_fill" class="absolute z-10 h-2"></div>
 
                             <label for="price_from" class="sr-only">Цена от</label>
-                            <input class="" type="range" id="price_from" value="{{request()->has('price_from') ? request('price_from') : '0'}}" min="0" max="700000" step="100">
+                            <input class="" type="range" id="price_from" value="{{request('price_from') ? request('price_from') : '0'}}" min="0" max="700000" step="100">
 
                             <label for="price_to" class="sr-only text-red-700">Цена до</label>
-                            <input class="" type="range" id="price_to" value="{{request()->has('price_to') ? request('price_to') : '700000'}}" min="0" max="700000" step="1000">
+                            <input class="" type="range" id="price_to" value="{{request('price_to') ? request('price_to') : '700000'}}" min="0" max="700000" step="1000">
                         </div>
                     </div>
                 </x-filter-item>
                 <x-filter-item :title="__('Color')">
-                    <ul x-show="filter" id="themes">
+                    <ul x-show="filter" id="colors" class="max-h-52 overflow-y-scroll">
                         @foreach($colors as $color)
                             <x-filter-input :model="$color" id_text="color-{{$color->id}}" type="checkbox" filter_name="color"/>
+                        @endforeach
+                    </ul>
+                </x-filter-item>
+                <x-filter-item :title="__('Material')">
+                    <ul x-show="filter" id="materials" class="max-h-52 overflow-y-scroll">
+                        @foreach($materials as $material)
+                            <x-filter-input :model="$material" id_text="material-{{$material->id}}" type="checkbox" filter_name="material"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
