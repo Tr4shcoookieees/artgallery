@@ -1,13 +1,14 @@
-// Filters
 const categories = Array.from(document.querySelectorAll('input[name="category"]'));
 const styles = Array.from(document.querySelectorAll('input[name="style"]'));
 const themes = Array.from(document.querySelectorAll('input[name="theme"]'));
 const colors = Array.from(document.querySelectorAll('input[name="color"]'));
+const materials = Array.from(document.querySelectorAll('input[name="material"]'));
 const priceFromInput = document.getElementById('price_from');
 const priceToInput = document.getElementById('price_to');
 let filterLink = document.getElementById('filter_link');
 let styleParams = filterLink.href.includes('style') ? Array.from(filterLink.href.match(/style=([^&]*)/)[1].split('%25')) : [];
 let colorParams = filterLink.href.includes('color') ? Array.from(filterLink.href.match(/color=([^&]*)/)[1].split('%25')) : [];
+let materialParams = filterLink.href.includes('material') ? Array.from(filterLink.href.match(/material=([^&]*)/)[1].split('%25')) : [];
 let lastChanged = null;
 
 categories.forEach(category => {
@@ -20,6 +21,12 @@ categories.forEach(category => {
             filterLink.href = filterLink.href.includes('category') ? filterLink.href.replace(/category=[^&]*/, `${newLink}`) : filterLink.href + `?${newLink}`;
         }
     });
+
+    category.onclick = function (e) {
+        if (e.ctrlKey) {
+            this.checked = false;
+        }
+    }
 });
 
 themes.forEach(theme => {
@@ -31,6 +38,12 @@ themes.forEach(theme => {
             filterLink.href = filterLink.href.includes('theme') ? filterLink.href.replace(/theme=[^&]*/, `${newLink}`) : filterLink.href + `?${newLink}`;
         }
     });
+
+    theme.onclick = function (e) {
+        if (e.ctrlKey) {
+            this.checked = false;
+        }
+    }
 });
 
 styles.forEach(style => {
@@ -64,6 +77,24 @@ colors.forEach(color => {
             filterLink.href = filterLink.href.includes('color') ? filterLink.href.replace(/color=[^&]*/, `${newLink}`) : filterLink.href + `&${newLink}`;
         } else {
             filterLink.href = filterLink.href.includes('color') ? filterLink.href.replace(/color=[^&]*/, `${newLink}`) : filterLink.href + `?${newLink}`;
+        }
+        console.log(filterLink.href);
+    });
+});
+
+materials.forEach(material => {
+    material.addEventListener('change', (filter) => {
+        filter.target.checked ? materialParams.push(filter.target.value) : materialParams.splice(materialParams.indexOf(filter.target.value), 1);
+        let newLink = `material=${materialParams.join('%25')}`;
+        if (newLink === 'material=') {
+            filterLink.href = filterLink.href.replace(/material=[^&]*/, '');
+            console.log(filterLink.href);
+            return;
+        }
+        if (filterLink.href.includes('?')) {
+            filterLink.href = filterLink.href.includes('material') ? filterLink.href.replace(/material=[^&]*/, `${newLink}`) : filterLink.href + `&${newLink}`;
+        } else {
+            filterLink.href = filterLink.href.includes('material') ? filterLink.href.replace(/material=[^&]*/, `${newLink}`) : filterLink.href + `?${newLink}`;
         }
         console.log(filterLink.href);
     });
