@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Country;
+use App\Models\Artwork;
+use App\Models\Material;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('artwork_materials', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->index();
-            $table->foreignIdFor(Country::class)->constrained();
+            $table->foreignIdFor(Artwork::class)->constrained();
+            $table->foreignIdFor(Material::class)->constrained();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -25,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('artwork_materials');
     }
 };

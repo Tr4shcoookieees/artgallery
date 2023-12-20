@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App;
+use App\Models\Artwork;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,8 +12,8 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $artworks_ten = App\Models\Artwork::inRandomOrder()->limit(10)->get()->chunk(5);
-        $artworks_four = App\Models\Artwork::inRandomOrder()->limit(4)->get();
+        $artworks_ten = Artwork::inRandomOrder()->limit(10)->get()->chunk(5);
+        $artworks_four = Artwork::inRandomOrder()->limit(4)->get();
         return view('homepage', compact('artworks_ten', 'artworks_four'));
     }
 }

@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Category extends Model
+class Material extends Model
 {
-    public function artworks(): HasMany
+    public function artworks(): BelongsToMany
     {
-        return $this->hasMany(Artwork::class);
+        return $this->belongsToMany(Artwork::class, 'artwork_materials');
     }
 
     protected function nameNormalize(): Attribute

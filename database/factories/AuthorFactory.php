@@ -18,14 +18,7 @@ class AuthorFactory extends Factory
     {
         return [
             'nickname' => fake()->userName(),
-            'user_id' => fake()->numberBetween(1, 10),
-            'bio' => [
-                'age' => fake()->numberBetween(10, 85),
-                'gender' => fake()->randomElement(['male', 'female']),
-                'country' => fake()->country(),
-                'city' => fake()->city(),
-                'website' => fake()->url(),
-            ]
+            'bio' => fake()->text()
         ];
     }
 }

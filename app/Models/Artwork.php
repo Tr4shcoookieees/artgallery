@@ -47,6 +47,11 @@ class Artwork extends Model
         return $this->belongsToMany(Color::class, 'artwork_colors');
     }
 
+    public function materials(): BelongsToMany
+    {
+        return $this->belongsToMany(Material::class, 'artwork_materials');
+    }
+
     /**
      * Accessors & mutators
      */
@@ -81,28 +86,49 @@ class Artwork extends Model
     protected function condition(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => json_decode($attributes['info'])->condition->{app()->getLocale()},
-        );
-    }
-
-    protected function isSold(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value, $attributes) => json_decode($attributes['info'])->is_sold,
+            get: fn($value, $attributes) => json_decode($attributes['info'])->condition,
         );
     }
 
     protected function isUnique(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => json_decode($attributes['info'])->isUnique,
+            get: fn($value, $attributes) => json_decode($attributes['info'])->tags->is_unique,
         );
     }
 
-    protected function material(): Attribute
+    protected function isSold(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attributes) => json_decode($attributes['info'])->material->{app()->getLocale()},
+            get: fn($value, $attributes) => json_decode($attributes['info'])->tags->is_sold,
+        );
+    }
+
+    protected function tags(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attributes) => [
+                'is_unique' => [
+                    'value' => json_decode($attributes['info'])->tags->is_unique,
+                    'text_node' => 'One of a kind',
+                    'icon' => 'untitledui-diamond'
+                ],
+                'is_signed' => [
+                    'value' => json_decode($attributes['info'])->tags->is_signed,
+                    'text_node' => 'Artwork signed by the artist',
+                    'icon' => 'fas-signature'
+                ],
+                'is_certified' => [
+                    'value' => json_decode($attributes['info'])->tags->is_certified,
+                    'text_node' => 'Certificate of Authenticity included',
+                    'icon' => 'fluentui-certificate-20-o'
+                ],
+                'is_framed' => [
+                    'value' => json_decode($attributes['info'])->tags->is_certified,
+                    'text_node' => 'The painting comes in a frame',
+                    'icon' => 'simpleline-frame'
+                ]
+            ],
         );
     }
 
@@ -132,6 +158,12 @@ class Artwork extends Model
                 $colors = explode('%', $request->input('color'));
                 $q->whereHas('colors', function ($q) use ($colors) {
                     $q->whereIn('name', $colors);
+                });
+            },
+            'material' => function ($q) use ($request) {
+                $materials = explode('%', $request->input('material'));
+                $q->whereHas('materials', function ($q) use ($materials) {
+                    $q->whereIn('name', $materials);
                 });
             },
             'price_from' => function ($q) use ($request) {

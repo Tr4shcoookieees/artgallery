@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ArtworkStyle>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\City>
  */
-class ArtworkStyleFactory extends Factory
+class CityFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,8 @@ class ArtworkStyleFactory extends Factory
     public function definition(): array
     {
         return [
-            'artwork_id' => fake()->numberBetween(1, 250),
-            'style_id' => fake()->numberBetween(1, 7),
+            'name' => fake(fake()->randomElement(['ru', 'en']))->unique()->city(),
+            'country_id' => rand(1, 3),
         ];
     }
 }

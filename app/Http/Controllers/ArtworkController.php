@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artwork;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Material;
 use App\Models\Style;
 use App\Models\Theme;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class ArtworkController extends Controller
         $styles = Style::get();
         $themes = Theme::get();
         $colors = Color::get();
-        return view('artworks.index', compact('categories', 'styles', 'themes', 'colors', 'artworks'));
+        $materials = Material::get();
+        return view('artworks.index', compact('categories', 'styles', 'themes', 'colors', 'materials', 'artworks'));
     }
 
     /**

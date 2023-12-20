@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('nickname')->index();
             $table->foreignIdFor(User::class)->constrained();
-            $table->json('bio');
+            $table->text('bio');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

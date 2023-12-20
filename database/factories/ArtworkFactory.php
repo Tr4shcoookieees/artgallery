@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Closure;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,9 +22,9 @@ class ArtworkFactory extends Factory
             'art-lg.png',
         ];
         $condition = [
-            ['ru' => 'Картина в идеальном состоянии', 'en' => 'The painting is in perfect condition'],
-            ['ru' => 'Картина в хорошем состоянии', 'en' => 'The painting is in good condition'],
-            ['ru' => 'Картина в плохом состоянии', 'en' => 'The painting is in bad condition'],
+            'The artwork is in perfect condition',
+            'The artwork is in good condition',
+            'The artwork is in bad condition',
         ];
         return [
             'title' => fake()->sentence(3),
@@ -35,16 +34,17 @@ class ArtworkFactory extends Factory
             'image' => $artwork[rand(0, 2)],
             'description' => fake()->paragraph(4),
             'info' => [
-                'is_unique' => fake()->boolean,
-                'is_sold' => fake()->boolean,
+                'tags' => [
+                    'is_unique' => fake()->boolean,
+                    'is_signed' => fake()->boolean,
+                    'is_certified' => fake()->boolean,
+                    'is_framed' => fake()->boolean,
+                    'is_sold' => fake()->boolean,
+                ],
                 'condition' => $condition[rand(0, 2)],
                 'width' => rand(50, 300),
                 'height' => rand(50, 300),
-                'year' => rand(1900, 2023),
-                'material' => [
-                    'ru' => fake()->word(),
-                    'en' => fake()->word(),
-                ],
+                'year' => rand(1900, 2023)
             ],
             'price' => fake()->randomFloat(10, 0, 700000),
         ];
