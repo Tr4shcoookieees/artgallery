@@ -48,7 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $dispatchesEvents = [
         'deleting' => UserDeleting::class,
-        'updating' => UserAvatarUpdating::class
+        'updating:avatar' => UserAvatarUpdating::class
     ];
 
     public function author(): HasOne
