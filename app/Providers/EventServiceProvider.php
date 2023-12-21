@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\User\UserAvatarUpdating;
 use App\Events\User\UserDeleting;
+use App\Listeners\UserAvatarUpdatingListener;
 use App\Listeners\UserDeletingListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -26,7 +28,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserDeleting::class => [
             UserDeletingListener::class
-        ]
+        ],
+        UserAvatarUpdating::class => [
+            UserAvatarUpdatingListener::class
+        ],
     ];
 
     /**

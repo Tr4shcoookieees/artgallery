@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-
-use Illuminate\Auth\MustVerifyEmail;
+use App\Events\User\UserAvatarUpdating;
+use App\Events\User\UserDeleting;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
@@ -13,21 +15,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, MustVerifyEmail;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'avatar',
-        'password',
-    ];
+    protected $fillable = ['city_id', 'name', 'email', 'avatar', 'phone', 'gender', 'age', 'password',];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -50,8 +47,8 @@ class User extends Authenticatable
     ];
 
     protected $dispatchesEvents = [
-        'deleting' => \App\Events\User\UserDeleting::class,
-        //
+        'deleting' => UserDeleting::class,
+        'updating' => UserAvatarUpdating::class
     ];
 
     public function author(): HasOne
@@ -59,9 +56,14 @@ class User extends Authenticatable
         return $this->hasOne(Author::class, 'user_id');
     }
 
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
+
     public function country(): HasOneThrough
     {
-        return $this->hasOneThrough(Country::class, City::class);
+        return $this->hasOneThrough(Country::class, City::class, 'id', 'id', 'city_id', 'country_id');
     }
 
     public function artworks(): HasManyThrough
