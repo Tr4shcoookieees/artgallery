@@ -51,21 +51,21 @@
     </div>
     <nav class="relative flex items-center justify-center pt-2">
         <div class="w-1/4"></div>
-        <ul class="flex w-2/4 justify-start overflow-x-scroll font-medium scrollbar-none">
-            <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
+        <ul class="flex mx-auto justify-between overflow-x-scroll font-medium scrollbar-none">
+            <li class="px-2 py-4 text-center text-lg font-normal md:px-6">
                 <a href="{{route('artworks.index', 'category=painting')}}">{{__('Painting')}}</a>
             </li>
-            <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
+            <li class="px-2 py-4 text-center text-lg font-normal md:px-6">
                 <a href="{{route('artworks.index', 'category=photo')}}">{{__('Photo')}}</a>
             </li>
-            <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
+            <li class="px-2 py-4 text-center text-lg font-normal md:px-6">
                 <a href="{{route('artworks.index', 'category=graphic')}}">{{__('Graphic')}}</a>
             </li>
-            <li class="w-full px-2 py-4 text-center text-lg font-normal md:px-6">
+            <li class="px-2 py-4 text-center text-lg font-normal md:px-6">
                 <a href="{{route('artworks.index', 'category=nft')}}">{{__('NFT')}}</a>
             </li>
         </ul>
-        <div class="col-start-11 col-end-13 hidden justify-end md:flex">
+        <div class="hidden w-1/4 justify-end md:flex">
             <label for="searchBar" class="sr-only">Search bar</label>
             <div class="flex items-center rounded-sm border-gray-300 bg-zinc-100 px-4 py-3">
                 <input type="text" class="w-10/12 border-none bg-transparent p-0 font-light focus:border-none focus:ring-0" placeholder="{{__('Search')}}" id="searchBar">
