@@ -46,11 +46,25 @@
             <div class="mx-auto bg-white shadow sm:rounded-lg sm:px-6 lg:px-8"
                  x-show="author"
             >
-                <div class="p-4 sm:p-8">
-                    <div class="max-w-xl">
-                        @include('profile.partials.update-author-information-form')
+                @if($user->author === null)
+                    <div class="p-4 sm:p-8">
+                        <div class="max-w-xl">
+                            @include('profile.partials.create-author-form')
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="p-4 sm:p-8">
+                        <div class="max-w-xl">
+                            @include('profile.partials.update-author-information-form')
+                        </div>
+                    </div>
+
+                    <div class="p-4 sm:p-8">
+                        <div class="max-w-xl">
+                            @include('profile.partials.delete-author-form')
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
 

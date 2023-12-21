@@ -1,58 +1,46 @@
 <section class="max-w-sm">
-    @if($user->author)
-        <header>
-            <h2 class="text-lg font-medium text-gray-900">
-                {{ __('Author profile Information') }}
-            </h2>
+    <header>
+        <h2 class="text-lg font-medium text-gray-900">
+            {{ __('Author profile Information') }}
+        </h2>
 
-            <p class="mt-1 text-sm text-gray-600">
-                {{ __("Update your author's profile information") }}
-            </p>
-        </header>
-        <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
-            @csrf
-            @method('PATCH')
+        <p class="mt-1 text-sm text-gray-600">
+            {{ __("Update your author's profile information") }}
+        </p>
+    </header>
 
+    <form method="post" action="{{ route('author.update', $user->author->id) }}" class="mt-6 space-y-6">
+        @csrf
+        @method('PATCH')
+
+        <div class="flex flex-col gap-y-1">
+            <x-input-label for="nickname" :value="__('Nickname')"/>
+            <x-text-input id="nickname" name="nickname" type="text" :value="old('nickname', $user->author->nickname)" autofocus required autocomplete="nickname"/>
+            <x-input-error :messages="$errors->get('nickname')" class="mt-2"/>
+        </div>
+
+        <div class="flex flex-col gap-y-1">
             <div class="flex flex-col gap-y-1">
-                <x-input-label for="nickname" :value="__('Nickname')"/>
-                <x-text-input id="nickname" name="nickname" type="text" :value="old('nickname', $user->author->nickname)" autofocus required autocomplete="nickname"/>
-                <x-input-error :messages="$errors->get('nickname')" class="mt-2"/>
+                <x-input-label for="bio" :value="__('Tell us about yourself')"/>
+                <x-textarea-input id="bio" name="bio" type="text" :value="old('bio', $user->author->bio)" required class="resize-none block h-52 border-gray-300 rounded-sm shadow-sm focus:border-red-300 focus:ring-red-300 scrollbar-thin scrollbar-thumb-gray-400"
+                />
+                <x-input-error :messages="$errors->get('bio')" class="mt-2"/>
             </div>
+        </div>
 
-            <div class="flex flex-col gap-y-1">
-                <x-input-label for="bio" :value="__('Bio')"/>
-                {{$user->author->age}}
-                {{$user->author->age}}
-                {{$user->author->age}}
-                {{$user->author->age}}
-            </div>
+        <div>
+            <x-primary-button type="submit">{{__('Save')}}</x-primary-button>
 
-            <div>
-                <x-primary-button type="submit">{{__('Save')}}</x-primary-button>
-
-                @if(session('status') === 'profile-updated')
-                    <p
-                        x-data="{ show: true }"
-                        x-show="show"
-                        x-transition
-                        x-init="setTimeout(() => show = false, 2000)"
-                        class="mt-2 text-sm font-medium text-green-600">
-                        {{__('Saved')}}
-                    </p>
-                @endif
-            </div>
-        </form>
-    @else
-        <header>
-            <h2 class="text-lg font-medium text-gray-900">
-                {{ __('You are not an author') }}
-            </h2>
-
-            <p class="mt-1 text-sm text-gray-600">
-                {{ __("Do you want to create author profile?") }}
-                <br>
-                {{ __("If so, please consider to fill the form below.") }}
-            </p>
-        </header>
-    @endif
+            @if(session('status') === 'author-stored')
+                <p
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-init="setTimeout(() => show = false, 2000)"
+                    class="mt-2 text-sm font-medium text-green-600">
+                    {{__('Saved')}}
+                </p>
+            @endif
+        </div>
+    </form>
 </section>
