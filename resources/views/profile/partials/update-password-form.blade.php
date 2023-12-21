@@ -40,7 +40,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="mt-2 text-sm font-medium text-green-600">
+                    class="text-sm font-medium text-green-600">
                     {{__('Saved')}}
                 </p>
             @endif
