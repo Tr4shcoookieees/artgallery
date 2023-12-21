@@ -41,7 +41,7 @@ class Author extends Model
 
     public function city(): HasOneThrough
     {
-        return $this->hasOneThrough(City::class, User::class);
+        return $this->hasOneThrough(City::class, User::class, 'id', 'id', 'user_id', 'city_id');
     }
 
     /*

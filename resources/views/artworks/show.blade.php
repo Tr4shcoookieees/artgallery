@@ -28,11 +28,11 @@
         </div>
         {{--Полная информация--}}
         <section class="flex flex-col gap-y-4">
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-4 place-content-center gap-4">
                 @foreach($artwork->tags as $tag)
                     @if($tag['value'])
                         <div class="rounded-sm bg-zinc-100 p-6 text-center">
-                            <div class="flex flex-col items-center justify-center">
+                            <div class="flex flex-col items-center">
                                 @svg($tag['icon'], 'w-8 h-8 mb-4')
                                 <p>{{__($tag['text_node'])}}</p>
                             </div>

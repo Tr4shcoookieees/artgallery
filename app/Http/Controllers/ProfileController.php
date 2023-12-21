@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AvatarUpdateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -31,6 +33,24 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return redirect()->route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    public function updateAvatar(AvatarUpdateRequest $request)
+    {
+        if ($request->validated()) {
+            $avatar = file_get_contents($request->file('avatar')->getRealPath());
+            // generate unique name for a file with prefix of $user->id
+            $avatar_name = $request->user()->id . '-' . uniqid() . '.' . $request->file('avatar')->extension();
+            if (!Storage::exists('uploads/avatars')) {
+                Storage::makeDirectory('uploads/avatars');
+            }
+            Storage::put('uploads/avatars/' . $avatar_name, $avatar);
+
+            $request->user()->avatar = $avatar_name;
+            $request->user()->save();
+        }
+
+        return redirect()->route('profile.edit')->with('status', 'avatar-updated');
     }
 
     /**
