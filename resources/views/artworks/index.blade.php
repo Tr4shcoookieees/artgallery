@@ -41,28 +41,28 @@
         <div class="mt-8 flex gap-x-8">
             <aside class="flex w-1/4 flex-col gap-y-2">
                 <x-filter-item :title="__('Category')">
-                    <ul x-show="filter" id="categories" class="max-h-52 overflow-y-scroll">
+                    <ul x-show="filter" id="categories" class="max-h-52 overflow-y-scroll rounded-b-sm">
                         @foreach($categories as $category)
                             <x-filter-input :model="$category" id_text="category-{{$category->id}}" type="radio" filter_name="category"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
-                <x-filter-item :title="__('Style')">
-                    <ul x-show="filter" id="styles" class="max-h-52 overflow-y-scroll">
+                <x-filter-item :title="__('Style')" class="rounded-sm">
+                    <ul x-show="filter" id="styles" class="max-h-52 overflow-y-scroll rounded-b-sm">
                         @foreach($styles as $style)
                             <x-filter-input :model="$style" id_text="style-{{$style->id}}" type="checkbox" filter_name="style"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
                 <x-filter-item :title="__('Theme')">
-                    <ul x-show="filter" id="themes" class="max-h-52 overflow-y-scroll">
+                    <ul x-show="filter" id="themes" class="max-h-52 overflow-y-scroll rounded-b-sm">
                         @foreach($themes as $theme)
                             <x-filter-input :model="$theme" id_text="theme-{{$theme->id}}" type="radio" filter_name="theme"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
                 <x-filter-item :title="__('Price')">
-                    <div x-show="filter" class="block bg-zinc-600 bg-opacity-10 px-5 py-3 first-letter:uppercase">
+                    <div x-show="filter" class="block rounded-b-sm bg-zinc-600 bg-opacity-10 px-5 py-3 first-letter:uppercase">
                         <div class="mx-3 mb-4 flex items-center justify-between">
                             <div>
                                 <label class="text-sm font-medium">От</label>
@@ -85,22 +85,22 @@
                     </div>
                 </x-filter-item>
                 <x-filter-item :title="__('Color')">
-                    <ul x-show="filter" id="colors" class="max-h-52 overflow-y-scroll">
+                    <ul x-show="filter" id="colors" class="max-h-52 overflow-y-scroll rounded-b-sm">
                         @foreach($colors as $color)
                             <x-filter-input :model="$color" id_text="color-{{$color->id}}" type="checkbox" filter_name="color"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
                 <x-filter-item :title="__('Material')">
-                    <ul x-show="filter" id="materials" class="max-h-52 overflow-y-scroll">
+                    <ul x-show="filter" id="materials" class="max-h-52 overflow-y-scroll rounded-b-sm">
                         @foreach($materials as $material)
                             <x-filter-input :model="$material" id_text="material-{{$material->id}}" type="checkbox" filter_name="material"/>
                         @endforeach
                     </ul>
                 </x-filter-item>
-                <x-link-primary href="{{ request()->fullUrl() }}" id="filter_link">{{__('Apply filters')}}</x-link-primary>
+                <x-primary-link href="{{ request()->fullUrl() }}" id="filter_link">{{__('Apply filters')}}</x-primary-link>
                 @if(request()->hasAny(['category', 'style', 'theme', 'price_from', 'price_to']))
-                    <x-link-primary href="{{ route('artworks.index') }}" id="filter_link">{{__('Reset filters')}}</x-link-primary>
+                    <x-primary-link href="{{ route('artworks.index') }}" id="filter_link">{{__('Reset filters')}}</x-primary-link>
                 @endif
             </aside>
             <div class="relative w-3/4 columns-3 gap-8">

@@ -67,9 +67,10 @@
 </style>
 
 <div x-data="{filter: false}">
-    <div class="flex cursor-pointer items-center justify-between bg-zinc-600 bg-opacity-40 px-5 py-4"
+    <div class="flex cursor-pointer items-center justify-between rounded-sm bg-zinc-600 bg-opacity-40 px-5 py-4"
          x-data="{rotated: false}"
-         @click="filter = !filter; rotated = !rotated">
+         @click="filter = !filter; rotated = !rotated"
+    >
         <span class="select-none capitalize">{{$title}}</span>
         <x-filter-arrow/>
     </div>

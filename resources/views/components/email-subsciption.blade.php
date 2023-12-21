@@ -8,7 +8,7 @@
         </div>
         <div class="mx-auto flex max-w-fit flex-col gap-y-3 md:m-0 md:gap-x-4 md:self-center lg:flex-row">
             <label for="email" class="sr-only">Email</label>
-            <input class="max-w-fit select-none border-none p-4 font-light focus:border-none focus:ring-0" type="email" id="email" name="email" placeholder="{{__('Email')}}" required>
+            <input class="max-w-fit select-none rounded-sm border-none p-4 font-light focus:border-none focus:ring-0" type="email" id="email" name="email" placeholder="{{__('Email')}}" required>
             <x-primary-button type="submit">{{__('Subscribe')}}</x-primary-button>
         </div>
     </form>

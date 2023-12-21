@@ -2,11 +2,11 @@
 
 @section('content')
     <section style="background-image: url('{{asset('assets/banner.jpg')}}')" class="flex h-auto w-full flex-nowrap items-center justify-center bg-cover bg-fixed bg-bottom bg-blend-color-burn sm:h-96">
-        <div class="flex h-full w-full flex-col items-center justify-center gap-y-2 bg-white bg-opacity-10 px-6 py-6 text-center font-light text-white backdrop-blur-sm backdrop-filter sm:px-16 sm:py-10 md:h-auto lg:w-auto">
+        <div class="flex h-full w-full flex-col items-center justify-center gap-y-2 rounded-sm bg-white bg-opacity-10 px-6 py-6 text-center font-light text-gray-200 backdrop-blur-sm backdrop-filter sm:px-16 sm:py-10 md:h-auto lg:w-auto">
             <h1 class="text-2xl uppercase sm:text-3xl">{{__('Buying art has become much easier')}}</h1>
             <p>{{__(':appName is exactly the place you have been looking for!', ['appName' => config('app.name')])}}</p>
             <p>{{__('Free shipping, fair prices, over a million works from around the world for sale!')}}</p>
-            <x-link-primary href="{{route('artworks.index')}}" class="mt-2 hover:bg-opacity-10">{{__('Learn more')}}</x-link-primary>
+            <x-primary-link href="{{route('artworks.index')}}" class="mt-2 hover:bg-opacity-10">{{__('Learn more')}}</x-primary-link>
         </div>
     </section>
     <main class="md:px-14">

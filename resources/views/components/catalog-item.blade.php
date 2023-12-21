@@ -2,9 +2,9 @@
     'artwork'
 ])
 
-<figure {{ $attributes->class(['inline-block w-full mb-12 hover:shadow-lg hover:scale-105 transition duration-300']) }} class="">
+<figure {{ $attributes->class(['rounded-md inline-block w-full mb-12 hover:shadow-lg hover:scale-105 transition duration-300']) }} class="">
     <a href="{{route('artworks.show', $artwork->id)}}">
-        <div class="overflow-hidden">
+        <div class="overflow-hidden rounded-t-md">
             <img src="{{$artwork->image}}" alt="{{$artwork->title}}" class="w-full scale-100 select-none transition-transform duration-300 ease-in-out hover:scale-110">
         </div>
         <figcaption class="mt-3 p-4">

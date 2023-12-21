@@ -30,9 +30,9 @@
                 @auth
                     <a href="{{route('profile.edit')}}">{{auth()->user()->name}}</a>
                     @if(auth()->user()->avatar !== null)
-                        <img src="{{auth()->user()->avatar_normalize}}" alt="avatar" class="h-8 w-8 rounded-2xl">
+                        <img src="{{auth()->user()->avatar_normalize}}" alt="avatar" class="h-8 w-8 rounded-2xl object-center object-cover">
                     @else
-                        <x-default-avatar/>
+                        <img src="{{asset('storage/uploads/avatars/no-avatar.png')}}" alt="avatar" class="w-8 h-8 rounded-2xl border-2 border-gray-400">
                     @endif
                 @endauth
 
