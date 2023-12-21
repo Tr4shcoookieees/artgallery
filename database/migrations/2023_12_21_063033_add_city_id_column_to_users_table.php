@@ -12,7 +12,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(City::class)->nullable();
+            $table->foreignIdFor(City::class)->after('id')->nullable()->constrained();
         });
     }
 
@@ -26,3 +26,4 @@ return new class extends Migration {
         });
     }
 };
+
