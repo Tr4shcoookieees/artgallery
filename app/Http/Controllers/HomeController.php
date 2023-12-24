@@ -12,8 +12,8 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $artworks_ten = Artwork::inRandomOrder()->limit(10)->get()->chunk(5);
-        $artworks_four = Artwork::inRandomOrder()->limit(4)->get();
+        $artworks_ten = Artwork::with('author')->inRandomOrder()->limit(10)->get()->chunk(5);
+        $artworks_four = Artwork::with('author')->inRandomOrder()->limit(4)->get();
         return view('homepage', compact('artworks_ten', 'artworks_four'));
     }
 }

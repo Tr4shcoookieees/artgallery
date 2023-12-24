@@ -15,8 +15,7 @@
     </div>
     <div>
         <p class="mb-8 break-words text-4xl font-light">Кажется, вы заблудились!</p>
-        <a class="bg-black px-5 py-4 font-light text-white outline-2 outline-black transition-colors duration-300 -outline-offset-1 hover:bg-white hover:text-black hover:outline"
-           href="{{route('home')}}">Вернуться на главную</a>
+        <x-primary-link :value="__('Go back home')" :href="route('home')" class="px-8 py-4"/>
     </div>
 </section>
 </body>

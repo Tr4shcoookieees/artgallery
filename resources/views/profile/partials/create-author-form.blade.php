@@ -23,7 +23,7 @@
         <div class="flex flex-col gap-y-1">
             <x-input-label for="bio" :value="__('Tell us about yourself')"/>
             <x-textarea-input id="bio" name="bio" type="text" :value="old('bio')" required
-                              class="resize-none block h-52 border-gray-300 rounded-sm shadow-sm focus:border-red-300 focus:ring-red-300 scrollbar-thin scrollbar-thumb-gray-400"
+                              class="block h-52 resize-none rounded-sm border-gray-300 shadow-sm scrollbar-thin scrollbar-thumb-gray-400 focus:border-red-300 focus:ring-red-300"
             />
             <x-input-error :messages="$errors->get('bio')" class="mt-2"/>
         </div>

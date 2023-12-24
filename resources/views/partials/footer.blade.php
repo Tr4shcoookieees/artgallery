@@ -3,7 +3,7 @@
     <div class="border-y p-4 border-y-primary md:px-14 md:py-5">
         <ul class="flex flex-col justify-center gap-x-8 gap-y-4 text-center sm:flex-row sm:justify-between sm:text-start">
             <li>
-                <span class="text-lg font-medium">{{__('messages.footer.about.key')}}</span>
+                <span class="text-lg font-medium">{{__('About')}}</span>
                 <ul class="font-light">
                     <li>{{__('The Company')}}</li>
                     <li>{{__('Legal information')}}</li>
