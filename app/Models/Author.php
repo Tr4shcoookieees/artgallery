@@ -22,10 +22,6 @@ class Author extends Model
         'bio' => 'json'
     ];
 
-    protected $with = [
-        'user'
-    ];
-
     /*
      * Relations
      */
@@ -37,6 +33,11 @@ class Author extends Model
     public function artworks(): HasMany
     {
         return $this->hasMany(Artwork::class, 'author_id');
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class, 'author_id');
     }
 
     public function city(): HasOneThrough

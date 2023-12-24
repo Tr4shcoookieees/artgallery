@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Author;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,20 +27,23 @@ class ArtworkFactory extends Factory
             'The artwork is in good condition',
             'The artwork is in bad condition',
         ];
+
+        $quantity = rand(1, 20);
+
         return [
             'title' => fake()->sentence(3),
-            'author_id' => rand(1, 10),
+            'author_id' => Author::inRandomOrder()->first()->id,
             'category_id' => rand(1, 5),
             'theme_id' => rand(1, 5),
             'image' => $artwork[rand(0, 2)],
             'description' => fake()->paragraph(4),
             'info' => [
                 'tags' => [
-                    'is_unique' => fake()->boolean,
+                    'is_unique' => $quantity === 1,
                     'is_signed' => fake()->boolean,
                     'is_certified' => fake()->boolean,
                     'is_framed' => fake()->boolean,
-                    'is_sold' => fake()->boolean,
+                    'is_sold' => $quantity > 0,
                 ],
                 'condition' => $condition[rand(0, 2)],
                 'width' => rand(50, 300),
@@ -47,6 +51,7 @@ class ArtworkFactory extends Factory
                 'year' => rand(1900, 2023)
             ],
             'price' => fake()->randomFloat(10, 0, 700000),
+            'quantity' => $quantity,
         ];
     }
 }

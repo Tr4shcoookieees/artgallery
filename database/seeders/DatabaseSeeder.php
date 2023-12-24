@@ -7,9 +7,11 @@ use App\Models\Artwork;
 use App\Models\Author;
 use App\Models\City;
 use App\Models\Color;
+use App\Models\Order;
 use App\Models\Style;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,7 +30,9 @@ class DatabaseSeeder extends Seeder
             StyleSeeder::class,
             ThemeSeeder::class,
             ColorSeeder::class,
-            MaterialSeeder::class
+            MaterialSeeder::class,
+            StatusSeeder::class,
+            RoleSeeder::class
         ]);
 
         /*
@@ -38,8 +42,10 @@ class DatabaseSeeder extends Seeder
         User::factory(100)->afterMaking(function (User $user) {
             $user->city_id = City::all()->random()->id;
             $user->save();
-            if (rand(0, 1) == 1) {
+            if (rand(0, 2) == 1) {
                 Author::factory()->count(1)->for($user)->create();
+                $user->role_id = 2;
+                $user->save();
             }
         })->create();
         Artwork::factory()->afterCreating(function (Artwork $artwork) {
@@ -63,6 +69,21 @@ class DatabaseSeeder extends Seeder
             foreach ($material_ids as $material_id) {
                 $artwork->materials()->attach($material_id);
             }
-        })->for(Author::all()->random())->count(250)->create();
+        })->count(250)->create();
+
+        Order::factory(150)->create();
+
+        User::create([
+            'role_id' => 3,
+            'name' => 'Maxim Abdreikin',
+            'email' => 'max.holyboy@gmail.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'phone' => '+7-900-900-9090',
+            'age' => 21,
+            'city_id' => City::all()->random()->id,
+            'gender' => 'male',
+            'remember_token' => Str::random(10),
+        ]);
     }
 }

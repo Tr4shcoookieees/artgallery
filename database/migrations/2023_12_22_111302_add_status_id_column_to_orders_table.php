@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\City;
+use App\Models\Status;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,8 +11,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(City::class)->after('id')->nullable()->constrained();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->foreignIdFor(Status::class)->after('id')->constrained();
         });
     }
 
@@ -21,10 +21,9 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('city_id');
-            $table->dropForeign(['city_id']);
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('status_id');
+            $table->dropForeign(['status_id']);
         });
     }
 };
-
