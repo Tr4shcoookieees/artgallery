@@ -11,7 +11,6 @@ use App\Models\Order;
 use App\Models\Style;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -83,7 +82,6 @@ class DatabaseSeeder extends Seeder
             'age' => 21,
             'city_id' => City::all()->random()->id,
             'gender' => 'male',
-            'remember_token' => Str::random(10),
         ]);
     }
 }

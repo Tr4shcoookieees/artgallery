@@ -26,6 +26,11 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2"/>
             </div>
 
+            <div class="flex items-center gap-x-2">
+                <x-text-input id="remember" name="remember" type="checkbox" class="focus:ring-0 focus:border-gray-300"/>
+                <x-input-label for="remember" :value="__('Remember me')" class="text-gray-400"/>
+            </div>
+
             <div class="mt-4 flex flex-col items-center justify-center">
                 @if(Route::has('password.request') && $errors->isNotEmpty())
                     <a class="mb-2 text-sm text-gray-400" href="{{ route('password.request') }}">

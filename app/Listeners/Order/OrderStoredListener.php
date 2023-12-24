@@ -25,7 +25,7 @@ class OrderStoredListener
         $this->activity->create([
             'user_id' => $event->order->user_id,
             'type' => 'order-stored',
-            'text' => 'User :user placed order :order.',
+            'text' => 'User :user placed order #:order.',
             'data' => [
                 'user' => $event->order->user->name,
                 'order' => $event->order->id,

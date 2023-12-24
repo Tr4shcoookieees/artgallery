@@ -59,6 +59,8 @@
     "Customers list": "Список покупателей",
     "Customers": "Покупатели",
     "Dashboard": "Панель",
+    "Updated": "Обновлено",
+    "Status unchanged": "Статус не изменен",
     "Date": "Дата",
     "Delete Account": "Удалить аккаунт",
     "Delete Author Profile": "Удалить профиль автора",
@@ -215,5 +217,7 @@
     "You can find inspiration here": "Здесь вы найдете вдохновение",
     "You don't have Author Profile yet": "У вас еще нет профиля автора",
     "You have :count unread messages": "У вас есть :count непрочитанных сообщений",
-    "Your email address is unverified": "Вы еще не подтвердили почту"
+    "Your email address is unverified": "Вы еще не подтвердили почту",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "Забыли пароль? Без проблем. Просто сообщите нам свой адрес электронной почты, и мы вышлем вам ссылку для сброса пароля, которая позволит вам выбрать новый.",
+    "Email Password Reset Link": "Отправить письмо для сброса пароля"
 }

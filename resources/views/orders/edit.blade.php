@@ -5,7 +5,7 @@
     <main class="md:px-14">
 
         <div class="rounded-2xl p-12 shadow-lg">
-            <section>
+            <section class="space-y-6">
                 <header class="flex gap-x-4">
                     <h3 class="font-medium text-lg">{{__('Order #:order details', ['order' => $order->id])}}</h3>
                     <x-status-code :order="$order"/>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Artwork;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +19,9 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'artworks' => Artwork::where('category_id', $this->id)->count(),
+            'artworks' => Order::whereHas('artwork', function ($query) use ($request) {
+                $query->where('category_id', $this->id);
+            })->count(),
         ];
     }
 }

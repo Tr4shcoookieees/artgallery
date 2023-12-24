@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function orders()
     {
         $user = auth()->user();
-        $orders = Order::with('user', 'status', 'artwork')->paginate(25);
+        $orders = Order::with('user', 'status', 'artwork')->orderByDesc('id')->paginate(25);
         $tab = 'commerce';
         $page = 'orders';
         return view('admin.orders', compact('user', 'tab', 'page', 'orders'));

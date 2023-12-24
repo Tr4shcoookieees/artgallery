@@ -33,7 +33,7 @@
             <div class="flex flex-col gap-y-1">
                 <x-input-label for="password_confirmation" :value="__('Confirm password')" class="sr-only"/>
                 <x-text-input id="password_confirmation" name="password_confirmation" type="password" :value="old('password_confirmation')" :placeholder="__('Confirm password')" required/>
-                <x-input-error :messages="$errors->get('password')" class="mt-2"/>
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
             </div>
 
             <div class="mt-4 flex flex-col items-center justify-center">
