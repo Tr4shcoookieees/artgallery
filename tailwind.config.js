@@ -5,6 +5,9 @@ export default {
         "./resources/js/**/*.js",
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php"
     ],
+    safelist: [
+        'bg-gray-300', 'bg-red-300', 'bg-blue-300', 'bg-amber-300', 'bg-green-300'
+    ],
     theme: {
         extend: {
             fontFamily: {

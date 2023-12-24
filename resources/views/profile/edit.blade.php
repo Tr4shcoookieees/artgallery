@@ -9,7 +9,12 @@
             <x-li-element :value="__('Profile information')" click="profile = true; author = false" select_class="{'bg-gray-200': profile}"/>
             <x-li-element :value="__('My author profile')" click="profile = false; author = true" select_class="{'bg-gray-200': author}"/>
 
-            <li class="p-4 rounded-sm hover:bg-red-200">
+            @if($user->role->name === 'admin')
+                <li class="rounded-sm p-4 hover:bg-gray-200">
+                    <a href="{{ route('admin.index') }}">{{__('Admin dashboard')}}</a>
+                </li>
+            @endif
+            <li class="rounded-sm p-4 hover:bg-red-200">
                 <form action="{{ route('logout') }}" method="post" onclick="this.submit()">
                     @csrf
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Выйти</a>

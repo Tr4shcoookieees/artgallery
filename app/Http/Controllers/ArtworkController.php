@@ -17,7 +17,7 @@ class ArtworkController extends Controller
      */
     public function index(Request $request)
     {
-        $artworks = Artwork::filter($request)->with('category')->paginate(12);
+        $artworks = Artwork::with('category', 'author')->filter($request)->paginate(12);
 
         $categories = Category::get();
         $styles = Style::get();
