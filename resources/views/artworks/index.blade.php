@@ -10,11 +10,11 @@
         <div class="mt-8 flex justify-end gap-x-8">
             <div class="flex items-center justify-end gap-x-4">
                 <div>
-                    <label class="text-sm font-medium">Сортировать по:</label>
+                    <label class="text-sm font-medium">{{__('Sort by:')}}</label>
                 </div>
                 <a href="{{request()->fullUrl()}}" class="mr-2 text-sm font-medium sorting-item" data-sorting-type="price">
                     <div class="inline-flex items-center gap-x-2">
-                        <p>Цене</p>
+                        <p>{{__('Price')}}</p>
                         @if(request('sort') === 'price%asc' || request('sort') === 'price%desc')
                             <x-filter-arrow style="{{request('sort') == 'price%desc' ? 'transform: rotate(180deg)' : ''}}"/>
                         @endif
@@ -22,7 +22,7 @@
                 </a>
                 <a href="{{request()->fullUrl()}}" class="mr-2 text-sm font-medium sorting-item" data-sorting-type="title">
                     <div class="inline-flex items-center gap-x-2">
-                        <p>Названию</p>
+                        <p>{{__('Title')}}</p>
                         @if(request('sort') === 'title%asc' || request('sort') === 'title%desc')
                             <x-filter-arrow style="{{request('sort') == 'title%desc' ? 'transform: rotate(180deg)' : ''}}"/>
                         @endif
@@ -30,7 +30,7 @@
                 </a>
                 <a href="{{request()->fullUrl()}}" class="mr-2 text-sm font-medium sorting-item" data-sorting-type="size">
                     <div class="inline-flex items-center gap-x-2">
-                        <p>Размеру</p>
+                        <p>{{__('Size')}}</p>
                         @if(request('sort') === 'size%asc' || request('sort') === 'size%desc')
                             <x-filter-arrow style="{{request('sort') == 'size%desc' ? 'transform: rotate(180deg)' : ''}}"/>
                         @endif
@@ -65,21 +65,21 @@
                     <div x-show="filter" class="block rounded-b-sm bg-zinc-600 bg-opacity-10 px-5 py-3 first-letter:uppercase">
                         <div class="mx-3 mb-4 flex items-center justify-between">
                             <div>
-                                <label class="text-sm font-medium">От</label>
+                                <label class="text-sm font-medium">{{__('From')}}</label>
                                 <p id="min_value" class="font-medium">{{request('price_from') ? request('price_from') : '0'}} &#8381;</p>
                             </div>
                             <div>
-                                <label class="text-sm font-medium">До</label>
+                                <label class="text-sm font-medium">{{__('To')}}</label>
                                 <p id="max_value" class="font-medium">{{request('price_to') ? request('price_to') : '700000'}} &#8381;</p>
                             </div>
                         </div>
                         <div class="relative">
                             <div id="range_fill" class="absolute z-10 h-2"></div>
 
-                            <label for="price_from" class="sr-only">Цена от</label>
+                            <label for="price_from" class="sr-only">Price from</label>
                             <input class="" type="range" id="price_from" value="{{request('price_from') ? request('price_from') : '0'}}" min="0" max="700000" step="100">
 
-                            <label for="price_to" class="sr-only text-red-700">Цена до</label>
+                            <label for="price_to" class="sr-only text-red-700">Price to</label>
                             <input class="" type="range" id="price_to" value="{{request('price_to') ? request('price_to') : '700000'}}" min="0" max="700000" step="1000">
                         </div>
                     </div>

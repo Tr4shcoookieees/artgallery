@@ -7,6 +7,6 @@
             {{__('Order #:order', ['order' => $activity->data['order']])}}
         </a>
 
-        <span class="text-sm text-slate-600 font-light">At: {{$activity->data['datetime']}}</span>
+        <span class="text-sm text-slate-600 font-light">{{__('At:')}} {{$activity->data['datetime']}}</span>
     </div>
 </div>

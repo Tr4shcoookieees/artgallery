@@ -12,8 +12,8 @@
     <main class="md:px-14">
         <section class="flex flex-col">
             <div class="text-center lg:text-start">
-                <p class="text-sm font-light uppercase">Тренды: работы, высоко оцененные нашим сообществом</p>
-                <h3 class="mt-1 text-2xl font-light uppercase">Работы месяца</h3>
+                <p class="text-sm font-light uppercase">{{__('Trends: works highly rated by our community')}}</p>
+                <h3 class="mt-1 text-2xl font-light uppercase">{{__('Top of the month')}}</h3>
             </div>
             <div class="mt-4 grid auto-rows-auto gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
                 @foreach($artworks_ten[0] as $artwork)
@@ -31,8 +31,8 @@
         </section>
         <section class="mt-8 flex flex-col">
             <div class="text-center lg:text-start">
-                <p class="text-sm font-light uppercase">Выбрано нашими экспертами</p>
-                <h3 class="mt-1 text-2xl font-light uppercase">Популярные художники</h3>
+                <p class="text-sm font-light uppercase">{{__('Selected by our experts')}}</p>
+                <h3 class="mt-1 text-2xl font-light uppercase">{{__('Popular artists')}}</h3>
             </div>
             <div class="mt-4 grid gap-4 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-4 lg:grid-rows-1">
                 @foreach($artworks_four as $artwork)
@@ -44,8 +44,8 @@
         </section>
         <section class="mt-8 flex flex-col">
             <div class="text-center lg:text-start">
-                <p class="text-sm font-light uppercase">Выбрано нашими экспертами</p>
-                <h3 class="mt-1 text-2xl font-light uppercase">Здесь вы найдете вдохновение</h3>
+                <p class="text-sm font-light uppercase">{{__('Selected by our experts')}}</p>
+                <h3 class="mt-1 text-2xl font-light uppercase">{{__('You can find inspiration here')}}</h3>
             </div>
             <div class="mt-4 grid auto-rows-auto gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
                 @foreach($artworks_ten[1] as $artwork)
@@ -62,8 +62,12 @@
             </div>
         </section>
         <section class="mt-8">
-            <h3 class="text-2xl font-light uppercase">Что такое {{config('app.name')}}?</h3>
-            <p>Целью создания ArtGallery послужило создание онлайн-рынка, который был бы простым, безопасным и прибыльным для художников во всем мире. Так родилась виртуальная художественная галерея с более, чем 3 миллионами посетителей. ArtGallery готова предложить Вам эксклюзивные цены на оригинальные произведения искусства как начинающих, так и намного более опытных и известных художников со всего мира с бесплатной доставкой в любую точку планеты в короткие сроки прямиком к порогу вашего дома.<br>Наслаждайтесь подборками, тщательно составленными нашими экспертами. Ищите вдохновение в работах, выполненных в самых различных стилях, формах и цветовых палитрах.<br>Здесь Вы обязательно найдете что-то, что в последствии станет идеальным подарком или стильным украшением ваших стен!</p>
+            <h3 class="text-2xl font-light uppercase mb-2">{{__('What is :app?', ['app' => config('app.name')])}}</h3>
+            <div class="space-y-1">
+                <p>{{__('The goal of ArtGallery was to create an online marketplace that would be simple, secure, and profitable for artists around the world. Thus was born a virtual art gallery with more than 3 million visitors. ArtGallery is ready to offer you exclusive prices for original works of art from both beginners and much more experienced and famous artists from all over the world with free delivery anywhere in the world in a short time, straight to your doorstep.')}}</p>
+                <p>{{__('Enjoy selections carefully curated by our experts. Find inspiration in artwork in a wide range of styles, shapes and color palettes.')}}</p>
+                <p>{{__('Here you will definitely find something that will later become an ideal gift or stylish decoration for your walls!')}}</p>
+            </div>
         </section>
     </main>
 @endsection

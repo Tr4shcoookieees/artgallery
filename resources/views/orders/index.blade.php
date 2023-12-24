@@ -14,7 +14,7 @@
                         <x-status-code :order="$order"/>
                     </div>
                 </div>
-                <div class="flex gap-x-8"
+                <div class="flex flex-wrap gap-8"
                      x-show="order"
                 >
                     <div class="space-y-2">

@@ -17,7 +17,7 @@
         <div class="flex flex-nowrap gap-x-8">
             <section class="w-full max-w-3xl rounded-xl p-12 shadow-lg space-y-4">
                 <header>
-                    <h3 class="text-lg font-medium">{{__('Last activity')}}</h3>
+                    <h3 class="text-lg font-medium">{{__('Last Activity')}}</h3>
 
                     <div class="mt-4 space-y-4 max-h-[280px] overflow-y-scroll scrollbar-thin scrollbar-track-slate-400">
                         @foreach(Activity::orderByDesc('created_at')->limit(15)->get() as $activity)
@@ -30,7 +30,7 @@
             </section>
             <section class="w-full max-h-full rounded-xl p-12 shadow-lg space-y-4">
                 <header>
-                    <h3 class="text-lg font-medium">{{__('Category - artworks count')}}</h3>
+                    <h3 class="text-lg font-medium">{{__('Number of artworks depending on category')}}</h3>
 
                     <div class="mt-4 space-y-4">
                         <canvas class="rounded-lg border border-gray-200 p-4 space-y-2 max-h-96" id="myChart"></canvas>

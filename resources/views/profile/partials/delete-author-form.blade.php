@@ -1,7 +1,7 @@
 <section class="space-y-6">
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Delete Author profile') }}
+            {{ __('Delete Author Profile') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
@@ -12,7 +12,7 @@
     <x-danger-button
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-author-deletion')">
-        {{ __('Delete profile') }}
+        {{ __('Delete Author Profile') }}
     </x-danger-button>
 
     <x-modal name="confirm-author-deletion" :show="$errors->profileDeletion->isNotEmpty()" focusable>
@@ -25,7 +25,7 @@
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                {{ __('Once your author profile is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete profile.') }}
+                {{ __('Once your profile is deleted, all of its resources and data will be permanently deleted') }}. {{__('Please enter your password to confirm you would like to permanently delete it.')}}
             </p>
 
             <div class="mt-6">
@@ -48,7 +48,7 @@
                 </x-primary-button>
 
                 <x-danger-button class="ml-3">
-                    {{ __('Delete author profile') }}
+                    {{ __('Delete Author Profile') }}
                 </x-danger-button>
             </div>
         </form>

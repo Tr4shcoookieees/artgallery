@@ -5,7 +5,7 @@
     <main class="space-y-6">
         <section class="w-full items-center justify-center rounded-xl bg-gray-300 bg-opacity-20 shadow-lg white space-y-4">
             <header class="px-12 pt-6 pb-6">
-                <h3 class="text-2xl font-medium">{{__('Order list')}}</h3>
+                <h3 class="text-2xl font-medium">{{__('Orders list')}}</h3>
             </header>
         </section>
 

@@ -1,11 +1,11 @@
 <section class="max-w-sm">
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Author profile Information') }}
+            {{ __('Author Profile information') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your author's profile information") }}
+            {{ __("Update your author profile information") }}
         </p>
     </header>
 

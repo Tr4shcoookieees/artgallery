@@ -6,18 +6,18 @@
           x-data="{ profile: true, author: false }"
     >
         <ul class="flex flex-col gap-y-2 min-w-[24ch]">
-            <x-li-element :value="__('Profile information')" click="profile = true; author = false" select_class="{'bg-gray-200': profile}"/>
-            <x-li-element :value="__('My author profile')" click="profile = false; author = true" select_class="{'bg-gray-200': author}"/>
+            <x-li-element :value="__('Profile Information')" click="profile = true; author = false" select_class="{'bg-gray-200': profile}"/>
+            <x-li-element :value="__('Author Profile')" click="profile = false; author = true" select_class="{'bg-gray-200': author}"/>
 
             @if($user->role->name === 'admin')
                 <li class="rounded-sm p-4 hover:bg-gray-200">
-                    <a href="{{ route('admin.index') }}">{{__('Admin dashboard')}}</a>
+                    <a href="{{ route('admin.index') }}">{{__('Admin Dashboard')}}</a>
                 </li>
             @endif
             <li class="rounded-sm p-4 hover:bg-red-200">
                 <form action="{{ route('logout') }}" method="post" onclick="this.submit()">
                     @csrf
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Выйти</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">{{__('Log out')}}</a>
                 </form>
             </li>
         </ul>

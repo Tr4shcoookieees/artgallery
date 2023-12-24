@@ -1,7 +1,7 @@
 <section class="max-w-sm">
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('You don\'t have author profile yet') }}
+            {{ __("You don't have Author Profile yet") }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">

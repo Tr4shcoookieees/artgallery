@@ -7,7 +7,7 @@
         <div class="rounded-2xl p-12 shadow-lg">
             <section>
                 <header class="flex gap-x-4">
-                    <h3 class="font-medium text-lg">{{__('Order #:order_id details', ['order_id' => $order->id])}}</h3>
+                    <h3 class="font-medium text-lg">{{__('Order #:order details', ['order' => $order->id])}}</h3>
                     <x-status-code :order="$order"/>
                 </header>
 
@@ -20,8 +20,8 @@
                             <x-input-label for="status" :value="__('Status')" required="true"/>
                             <x-select-input id="status" name="status" required>
                                 @foreach(Status::get() as $status)
-                                    <option class="capitalize" value="{{$status->id}}" {{$status->id == $order->status_id ? 'selected' : ''}}>
-                                        {{ucfirst($status->name)}}
+                                    <option value="{{$status->id}}" {{$status->id == $order->status_id ? 'selected' : ''}}>
+                                        {{__(ucfirst($status->name))}}
                                     </option>
                                 @endforeach
                             </x-select-input>

@@ -43,7 +43,9 @@
                 @endif
 
                 <div class="mt-3 max-w-sm text-center text-xs text-gray-400">
-                    <p>Регистрируясь, вы соглашаетесь с <a class="underline" href="#">Условиями пользования</a> и <a class="underline" href="#">Политикой конфиденциальности</a></p>
+                    <p>
+                        {!! __('By registering, you agree to the <a class="underline" href="#">Terms of Use</a> and <a class="underline" href="#">Privacy Policy</a>') !!}
+                    </p>
                 </div>
             </div>
         </form>

@@ -51,7 +51,7 @@
         {{--Другие работы автора--}}
         <section class="flex flex-col">
             <div class="text-center lg:text-start">
-                <h3 class="mt-1 text-2xl font-light uppercase">Другие работы {{$artwork->author->nickname}}</h3>
+                <h3 class="mt-1 text-2xl font-light uppercase">{{__('Other works by :author', ['author' => $artwork->author->nickname])}}</h3>
             </div>
             <div class="mt-4 flex gap-x-4">
                 @foreach($artwork->author->artworks()->inRandomOrder()->limit(4)->get() as $author_artwork)
