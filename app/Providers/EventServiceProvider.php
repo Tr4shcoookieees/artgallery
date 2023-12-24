@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Events\Order\OrderStatusUpdatedEvent;
+use App\Events\Order\OrderStoredEvent;
 use App\Events\User\UserAvatarUpdating;
 use App\Events\User\UserDeleting;
-use App\Listeners\UserAvatarUpdatingListener;
-use App\Listeners\UserDeletingListener;
+use App\Listeners\Order\OrderStatusUpdatedListener;
+use App\Listeners\Order\OrderStoredListener;
+use App\Listeners\User\UserAvatarUpdatingListener;
+use App\Listeners\User\UserDeletingListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -32,6 +36,12 @@ class EventServiceProvider extends ServiceProvider
         UserAvatarUpdating::class => [
             UserAvatarUpdatingListener::class
         ],
+        OrderStoredEvent::class => [
+            OrderStoredListener::class
+        ],
+        OrderStatusUpdatedEvent::class => [
+            OrderStatusUpdatedListener::class
+        ]
     ];
 
     /**

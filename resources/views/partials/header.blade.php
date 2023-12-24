@@ -28,6 +28,9 @@
         <div class="flex flex-nowrap rounded-sm bg-zinc-100 p-2">
             <div class="hidden cursor-pointer flex-nowrap items-center gap-x-2 md:flex">
                 @auth
+                    <a href="{{ route('order.index') }}">
+                        <x-fluentui-cart-20-o class="h-6 w-6"/>
+                    </a>
                     <a href="{{route('profile.edit')}}">{{auth()->user()->name}}</a>
                     @if(auth()->user()->avatar !== null)
                         <img src="{{auth()->user()->avatar_normalize}}" alt="avatar" class="h-8 w-8 rounded-2xl object-center object-cover">
@@ -46,7 +49,7 @@
     </div>
     <div class="flex flex-col items-center gap-y-8 py-2">
         <a href="{{route('home')}}">
-            <x-logo/>
+            <x-logo class=""/>
         </a>
     </div>
     <nav class="relative flex items-center justify-center pt-2">

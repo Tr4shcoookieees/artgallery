@@ -9,20 +9,27 @@
                     <span>&copy; {{$artwork->author->nickname}}</span>
                 </figcaption>
             </figure>
-            <div class="col-start-10 col-end-13 flex flex-col gap-y-5">
-                <div>
+            <div class="col-start-10 col-end-13 flex flex-col gap-y-4">
+                <div class="space-y-2">
                     <div>
                         <p class="text-lg font-medium capitalize">{{$artwork->title}}</p>
-                        <p class="font-light capitalize">{{$artwork->author->nickname}}</p>
+                        <p class="mt-2 flex items-center font-light capitalize">
+                            <img src="{{$artwork->user->avatar ? $artwork->user->avatar_normalize : asset('storage/uploads/avatars/no-avatar.png')}}" alt="avatar" class="h-6 w-6 rounded-full mr-2">
+                            {{$artwork->author->nickname}}
+                        </p>
                     </div>
                     <div class="mt-1 text-sm">
                         <p class="">{{$artwork->category->nameNormalize}} | {{$artwork->width . 'x' . $artwork->height}} cm</p>
                         <p class="text-lg font-medium">{{$artwork->price}} ₽ <span class="font-light text-zinc-400">| {{__('Free shipping')}}</span></p>
                     </div>
                 </div>
-                <div>
-                    <x-primary-button type="button" class="w-full">{{__('Order')}}</x-primary-button>
-                    <p class="mt-2 text-sm font-light text-zinc-400">{{__("ArtGallery Delivery: Delivery of this artwork is at the expense of ArtGallery and is carried out from the time of receipt of the application to the final delivery to the customer. Customs are not included.")}}</p>
+                <div class="flex flex-col space-y-4">
+                    @if($artwork->quantity == 0)
+                        <p class="text-lg font-medium text-zinc-400">{{__('This artwork has been sold')}}
+                            @else
+                                <x-primary-link class="w-full" :value="__('Order')" :href="route('order.create', 'product_id=' . $artwork->id)"/>
+                        <p class="text-sm font-light text-zinc-400">{{__("ArtGallery Delivery: Delivery of this artwork is at the expense of ArtGallery and is carried out from the time of receipt of the application to the final delivery to the customer. Customs are not included.")}}</p>
+                    @endif
                 </div>
             </div>
         </div>
