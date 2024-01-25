@@ -28,7 +28,7 @@ class ArtworkPolicy
      */
     public function create(User $user): bool
     {
-        return $user->author->exists();
+        return $user->author !== null;
     }
 
     /**

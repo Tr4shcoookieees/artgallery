@@ -114,7 +114,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function address(): Attribute
     {
         return Attribute::make(
-            get: fn($value, array $attributes) => $this->city->name . ', ' . $this->country->code,
+            get: fn($value, array $attributes) => $attributes['city_id'] !== null
+                ? $this->city->name . ', ' . $this->country->code
+                : ''
         );
+    }
+
+    public function assignRole($name): void
+    {
+        $this->role()->associate(Role::where('name', $name)->first());
     }
 }

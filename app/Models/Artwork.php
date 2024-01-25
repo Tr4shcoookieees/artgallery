@@ -15,6 +15,24 @@ class Artwork extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'author_id',
+        'category_id',
+        'theme_id',
+        'image',
+        'description',
+        'info',
+        'price',
+        'quantity',
+        'condition',
+        'height',
+        'is_sold',
+        'is_unique',
+        'width',
+        'year',
+    ];
+
     protected $casts = [
         'info' => 'array',
     ];
@@ -68,7 +86,7 @@ class Artwork extends Model
     protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => asset('assets/artworks/' . $value),
+            get: fn($value, array $attributes) => asset('storage/uploads/images/artworks/' . $attributes['image'])
         );
     }
 

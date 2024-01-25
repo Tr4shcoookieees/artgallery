@@ -58,9 +58,13 @@
                         </div>
                     </div>
                 @else
-                    <div class="p-4 sm:p-8">
+                    <div class="flex gap-x-8 p-4 sm:p-8">
                         <div class="max-w-xl">
                             @include('profile.partials.update-author-information-form')
+                        </div>
+
+                        <div class="max-w-xl">
+                            @include('profile.partials.create-artwork-form')
                         </div>
                     </div>
 

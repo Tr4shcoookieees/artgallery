@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::resource('artworks', ArtworkController::class)->only(['index', 'show']);
+Route::resource('artworks', ArtworkController::class)->only('index', 'show');
+Route::resource('artworks', ArtworkController::class)->only('store', 'edit', 'update', 'destroy')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -45,6 +46,12 @@ Route::get('language/{locale}', function ($locale) {
 
 Route::fallback(function () {
     return view('errors.404');
+});
+
+Route::get('/pgsql', function () {
+    var_dump(
+        DB::connection()
+    );
 });
 
 require __DIR__ . '/auth.php';

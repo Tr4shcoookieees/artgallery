@@ -15,6 +15,9 @@ class AdminAccessMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (auth()->user() != null && auth()->user()->role_id != 3) {
+            return redirect()->route('home');
+        }
         return $next($request);
     }
 }

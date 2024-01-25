@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('currencies', function (Blueprint $table) {
-            $table->string('code', 3)->primary()->comment('ISO 4217');
+            $table->string('code', 3)->unique()->comment('ISO 4217');
             $table->string('name', 50);
             $table->char('symbol', 1);
             $table->timestamp('created_at')->useCurrent();

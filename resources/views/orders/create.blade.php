@@ -42,13 +42,13 @@
 
                             <div class="flex flex-col gap-y-1">
                                 <x-input-label for="phone" :value="__('Phone')"/>
-                                <x-text-input id="phone" name="phone" type="text" :value="old('phone', auth()->user()->phone)" autofocus required autocomplete="phone"/>
+                                <x-text-input id="phone" name="phone" type="text" :value="old('phone', auth()->user()->phone ?? '')" autofocus required autocomplete="phone"/>
                                 <x-input-error :messages="$errors->get('phone')" class="mt-2"/>
                             </div>
 
                             <div class="flex flex-col gap-y-1">
                                 <x-input-label for="address" :value="__('Address')"/>
-                                <x-text-input id="address" name="address" type="text" :value="old('address', auth()->user()->city->name . ', ' . auth()->user()->country->name)" autofocus required autocomplete="address"/>
+                                <x-text-input id="address" name="address" type="text" :value="old('address', auth()->user()->address ?? '')" autofocus required autocomplete="address"/>
                                 <x-input-error :messages="$errors->get('address')" class="mt-2"/>
                             </div>
 

@@ -47,6 +47,33 @@
                     @endif
                 @endforeach
             </div>
+            <div class="space-y-3">
+                <div>
+                    <p>
+                        <span class="font-medium">{{__('Product title')}}</span>: {{$artwork->title}}
+                    </p>
+                    <p>
+                        <span class="font-medium">{{__('Category')}}</span>: {{__(ucfirst($artwork->category->name))}}
+                    </p>
+                    <p>
+                        <span class="font-medium">{{__('Size')}}</span>: {{$artwork->width . 'x' . $artwork->height}} cm
+                    </p>
+                    <p>
+                        <span class="font-medium">{{__('Style')}}</span>:
+                        @foreach($artwork->styles as $style)
+                            {{$style->name_normalize}}
+                        @endforeach
+                    </p>
+                    <p>
+                        <span class="font-medium">{{__('Material')}}</span>:
+                        @forelse($artwork->materials as $material)
+                            {{$material->name_normalize}}
+                        @empty
+                            {{__('Photo')}}
+                        @endforelse
+                    </p>
+                </div>
+            </div>
         </section>
         {{--Другие работы автора--}}
         <section class="flex flex-col">

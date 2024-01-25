@@ -39,7 +39,7 @@ class ProfileController extends Controller
     {
         if ($request->validated()) {
             $avatar = file_get_contents($request->file('avatar')->getRealPath());
-            // generate unique name for a file with prefix of $user->id
+
             $avatar_name = $request->user()->id . '-' . uniqid() . '.' . $request->file('avatar')->extension();
             if (!Storage::exists('uploads/avatars')) {
                 Storage::makeDirectory('uploads/avatars');

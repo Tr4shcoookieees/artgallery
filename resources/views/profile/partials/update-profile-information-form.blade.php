@@ -51,7 +51,7 @@
         </div>
 
         <div class="flex flex-col gap-y-1">
-            <x-input-label for="phone" :value="__('Phone number')"/>
+            <x-input-label for="phone" :value="__('Phone')"/>
             <x-text-input id="phone" name="phone" type="text" :value="old('phone', $user->phone ? $user->phone : '+7 ')" required autocomplete="phone"/>
             <x-input-error :messages="$errors->get('phone')" class="mt-2"/>
         </div>
@@ -66,15 +66,11 @@
         </div>
 
         <div class="flex flex-col gap-y-1">
-            <x-input-label for="city" :value="__('City')"/>
+            <x-input-label for="city" :value="__('Location')"/>
             <x-select-input id="city" name="city_id" required>
                 @foreach(City::all() as $city)
-                    <option value="{{$city->id}}"
-                    @if($user->city != null)
-                        {{$user->city->id == $city->id ? 'selected' : ''}}
-                        @endif
-                    >
-                        {{__($city->name)}}
+                    <option value="{{$city->id}}" {{$user->city_id != null ? 'selected' : ''}}>
+                        {{$city->name . ', ' . $city->country->code}}
                     </option>
                 @endforeach
             </x-select-input>

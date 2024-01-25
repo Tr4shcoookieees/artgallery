@@ -2,8 +2,8 @@
 
 @section('content')
     <main class="md:px-14">
-        <div class="text-center">
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, excepturi!</h1>
+        <div class="text-center space-y-2 max-w-screen-lg mx-auto">
+            <h1 class="text-lg font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, excepturi!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi deleniti dolorum facilis fugiat in ipsam optio rem reprehenderit similique? Assumenda blanditiis error ipsa nobis placeat quas. Alias aliquid, dolorum est officia ratione veritatis voluptas.</p>
         </div>
         {{--Sorting by name, price, size--}}

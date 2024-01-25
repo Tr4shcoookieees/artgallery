@@ -30,7 +30,7 @@ class OrderPolicy
      */
     public function create(User $user, Request $request): bool
     {
-        return !$user->author->exists() || $user->author->id === Artwork::find($request->product_id)->author_id;
+        return !$user->author->exists() || $user->author->id !== Artwork::find($request->product_id)->author_id;
     }
 
     /**
