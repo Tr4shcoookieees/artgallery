@@ -1,5 +1,7 @@
 <section {{ $attributes->class(['bg-zinc-100 rounded-sm p-4 md:px-14 md:py-10']) }}>
-    <form class="gap-x-16 md:flex md:flex-row md:justify-between">
+    <form method="post" action="{{route('email-subscription.subscribe')}}"
+          class="gap-x-16 md:flex md:flex-row md:justify-between">
+        @csrf
         <div class="mb-6 text-center md:mb-0 md:text-start">
             <span class="text-lg font-light uppercase">{{config('app.name')}}</span>
             <hr class="my-3 border-primary md:my-1 md:border-none">
