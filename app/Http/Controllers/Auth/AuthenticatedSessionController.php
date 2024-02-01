@@ -25,6 +25,8 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+        $request->user()->status = 'active';
+        $request->user()->save();
 
         $request->session()->regenerate();
 
@@ -36,6 +38,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        $request->user()->status = 'inactive';
+        $request->user()->save();
         auth()->guard('web')->logout();
 
         $request->session()->invalidate();

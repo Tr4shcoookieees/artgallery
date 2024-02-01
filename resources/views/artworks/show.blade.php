@@ -14,7 +14,7 @@
                     <div>
                         <p class="text-lg font-medium capitalize">{{$artwork->title}}</p>
                         <p class="mt-2 flex items-center font-light capitalize">
-                            <img src="{{$artwork->user->avatar ? $artwork->user->avatar_normalize : asset('storage/uploads/avatars/no-avatar.png')}}" alt="avatar" class="h-6 w-6 rounded-full mr-2">
+                            <img src="{{$artwork->user->avatar ? $artwork->user->avatar_normalize : asset('storage/uploads/avatars/no-avatar.png')}}" alt="avatar" class="mr-2 h-6 w-6 rounded-full">
                             {{$artwork->author->nickname}}
                         </p>
                     </div>
@@ -83,8 +83,30 @@
             <div class="mt-4 flex gap-x-4">
                 @foreach($artwork->author->artworks()->inRandomOrder()->limit(4)->get() as $author_artwork)
                     <a class="w-1/4" href="{{ route('artworks.show', $author_artwork->id) }}">
-                        <figure class="overflow-hidden aspect-1">
+                        <figure class="relative overflow-hidden aspect-1"
+                                x-data="{caption: false}"
+                                x-on:mouseenter="caption = true"
+                                x-on:mouseleave="caption = false"
+                        >
                             <img src="{{$author_artwork->image}}" alt="{{$author_artwork->name}}" class="h-full w-full scale-100 object-cover object-center transition-transform duration-500 hover:scale-110">
+                            <figcaption class="absolute bottom-0 max-h-52 flex flex-col gap-y-2 justify-end w-full bg-black bg-opacity-20 backdrop-blur-sm backdrop-filter {{--bg-opacity-5 bg-gradient-to-b from-gray-500/20 to-transparent--}} p-4 text-white"
+                                        x-show="caption"
+                                        x-transition:enter="transition ease-out duration-300"
+                                        x-transition:enter-start="transform -translate-x-full opacity-0"
+                                        x-transition:enter-end="transform -translate-x-0"
+                                        x-transition:leave="transition ease-in duration-300"
+                                        x-transition:leave-start="transform translate-x-0"
+                                        x-transition:leave-end="transform translate-x-full opacity-0"
+                            >
+                                <div>
+                                    <p class="capitalize max-w-[24ch] truncate">{{$author_artwork->title}}</p>
+                                    <p class="text-sm font-light">{{$author_artwork->category->nameNormalize}} | {{$author_artwork->width . 'x' . $artwork->height}} cm</p>
+                                </div>
+                                <div>
+                                    <p class="mt-2 text-lg font-medium">{{$author_artwork->price}} ₽</p>
+                                    <p class="text-sm font-light">{{__('Free shipping')}}</p>
+                                </div>
+                            </figcaption>
                         </figure>
                     </a>
                 @endforeach

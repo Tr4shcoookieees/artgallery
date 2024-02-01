@@ -39,7 +39,7 @@
                         <th class="border-b border-slate-200 py-3 pr-6 pl-4 text-start font-light text-slate-600">
                             <div>{{Carbon::make($order->created_at)->format('d/m/Y')}}</div>
                         </th>
-                        <th class="border-b border-slate-200 py-3 pr-6 pl-4 text-start font-medium text-green-500">
+                        <th class="border-b border-slate-200 py-3 pr-6 pl-4 text-start font-medium {{in_array($order->status->name, ['rejected', 'cancelled']) ? 'text-red-500' : 'text-green-500'}}">
                             <div>{{ Number::currency($order->price, 'RUB', 'ru') }}</div>
                         </th>
                         <th class="border-b border-slate-200 py-3 pr-6 pl-4 text-start font-light text-slate-600">

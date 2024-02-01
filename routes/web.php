@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::prefix('/email-subscription')->name('email-subscription.')->controller(SubscriptionController::class)->group(function () {
+    Route::post('/subscribe', 'subscribe')->name('subscribe');
+});
 
 /**
  * Служебные роуты

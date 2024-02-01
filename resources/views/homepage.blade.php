@@ -62,7 +62,7 @@
             </div>
         </section>
         <section class="mt-8">
-            <h3 class="text-2xl font-light uppercase mb-2">{{__('What is :app?', ['app' => config('app.name')])}}</h3>
+            <h3 class="mb-2 text-2xl font-light uppercase">{{__('What is :app?', ['app' => config('app.name')])}}</h3>
             <div class="space-y-1">
                 <p>{{__('The goal of ArtGallery was to create an online marketplace that would be simple, secure, and profitable for artists around the world. Thus was born a virtual art gallery with more than 3 million visitors. ArtGallery is ready to offer you exclusive prices for original works of art from both beginners and much more experienced and famous artists from all over the world with free delivery anywhere in the world in a short time, straight to your doorstep.')}}</p>
                 <p>{{__('Enjoy selections carefully curated by our experts. Find inspiration in artwork in a wide range of styles, shapes and color palettes.')}}</p>

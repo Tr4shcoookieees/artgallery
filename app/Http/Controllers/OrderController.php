@@ -10,6 +10,7 @@ use App\Models\Artwork;
 use App\Models\Order;
 use App\Models\Status;
 use App\Notifications\OrderStored;
+use App\Notifications\OrderStoredToAuthor;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -63,6 +64,7 @@ class OrderController extends Controller
             OrderStoredEvent::dispatch($order, $user, $product);
 
             $user->notify(new OrderStored($order));
+            $product->author->user->notify(new OrderStoredToAuthor($order));
 
             return redirect()->route('order.index')->with('status', 'order-stored');
         }

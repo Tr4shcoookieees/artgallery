@@ -166,48 +166,48 @@ class Artwork extends Model
     public function scopeFilter($query, Request $request): void
     {
         $filters = [
-            'category' => function ($q) use ($request) {
-                $q->whereHas('category', function ($q) use ($request) {
-                    $q->where('name', $request->input('category'));
+            'category' => function ($query) use ($request) {
+                $query->whereHas('category', function ($query) use ($request) {
+                    $query->where('name', $request->input('category'));
                 });
             },
-            'style' => function ($q) use ($request) {
+            'style' => function ($query) use ($request) {
                 $styles = explode('%', $request->input('style'));
-                $q->whereHas('styles', function ($q) use ($styles) {
-                    $q->whereIn('name', $styles);
+                $query->whereHas('styles', function ($query) use ($styles) {
+                    $query->whereIn('name', $styles);
                 });
             },
-            'theme' => function ($q) use ($request) {
-                $q->whereHas('theme', function ($q) use ($request) {
-                    $q->where('name', $request->input('theme'));
+            'theme' => function ($query) use ($request) {
+                $query->whereHas('theme', function ($query) use ($request) {
+                    $query->where('name', $request->input('theme'));
                 });
             },
-            'color' => function ($q) use ($request) {
+            'color' => function ($query) use ($request) {
                 $colors = explode('%', $request->input('color'));
-                $q->whereHas('colors', function ($q) use ($colors) {
-                    $q->whereIn('name', $colors);
+                $query->whereHas('colors', function ($query) use ($colors) {
+                    $query->whereIn('name', $colors);
                 });
             },
-            'material' => function ($q) use ($request) {
+            'material' => function ($query) use ($request) {
                 $materials = explode('%', $request->input('material'));
-                $q->whereHas('materials', function ($q) use ($materials) {
-                    $q->whereIn('name', $materials);
+                $query->whereHas('materials', function ($query) use ($materials) {
+                    $query->whereIn('name', $materials);
                 });
             },
-            'price_from' => function ($q) use ($request) {
-                $q->where('price', '>=', $request->input('price_from'));
+            'price_from' => function ($query) use ($request) {
+                $query->where('price', '>=', $request->input('price_from'));
             },
-            'price_to' => function ($q) use ($request) {
-                $q->where('price', '<=', $request->input('price_to'));
+            'price_to' => function ($query) use ($request) {
+                $query->where('price', '<=', $request->input('price_to'));
             },
-            'sort' => function ($q) use ($request) {
+            'sort' => function ($query) use ($request) {
                 $sort = explode('%', $request->input('sort'));
                 $sort_field = $sort[0];
                 $sort_order = $sort[1] ?? 'asc';
                 if ($sort_field === 'size') {
-                    $q->orderByRaw('JSON_EXTRACT(info, "$.width") * JSON_EXTRACT(info, "$.height") ' . $sort_order);
+                    $query->orderByRaw("(info->>'width')::integer * (info->>'height')::integer $sort_order");
                 } else {
-                    $q->orderBy($sort_field, $sort_order);
+                    $query->orderBy($sort_field, $sort_order);
                 }
             }
         ];

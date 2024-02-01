@@ -50,7 +50,7 @@ class ArtworkFactory extends Factory
                 'height' => rand(50, 300),
                 'year' => rand(1900, 2023)
             ],
-            'price' => fake()->randomFloat(10, 0, 700000),
+            'price' => fake()->randomFloat(2, 0, 700000),
             'quantity' => $quantity,
         ];
     }

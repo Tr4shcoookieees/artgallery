@@ -9,15 +9,18 @@
         </p>
     </header>
 
+
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
 
-        <div class="flex flex-col gap-y-1">
-            <x-input-label for="current_password" :value="__('Current password')"/>
-            <x-text-input id="current_password" name="current_password" type="password"/>
-            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2"/>
-        </div>
+        @if($user->password)
+            <div class="flex flex-col gap-y-1">
+                <x-input-label for="current_password" :value="__('Current password')"/>
+                <x-text-input id="current_password" name="current_password" type="password"/>
+                <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2"/>
+            </div>
+        @endif
 
         <div class="flex flex-col gap-y-1">
             <x-input-label for="password" :value="__('New password')"/>

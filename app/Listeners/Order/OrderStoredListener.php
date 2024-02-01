@@ -29,7 +29,7 @@ class OrderStoredListener
             'data' => [
                 'user' => $event->order->user->name,
                 'order' => $event->order->id,
-                'datetime' => $event->order->created_at->format('d/m/Y H:i'),
+                'datetime' => $event->order->created_at->format('H:i d/m/Y'),
             ]
         ]);
     }
